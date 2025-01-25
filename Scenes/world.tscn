@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://8qy80gy6vrri"]
+[gd_scene load_steps=10 format=3 uid="uid://8qy80gy6vrri"]
 
 [ext_resource type="PackedScene" uid="uid://bip1f0us0ut3q" path="res://Scenes/Player.tscn" id="1_xkdae"]
+[ext_resource type="Material" uid="uid://ce0c0xol6lehf" path="res://Materials/black.tres" id="2_mi21f"]
+[ext_resource type="Material" uid="uid://t133mbcce3a7" path="res://Materials/Gray.tres" id="3_1tkno"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuus3"]
 size = Vector3(100, 1, 100)
@@ -34,4 +36,605 @@ mesh = SubResource("PlaneMesh_sxqmc")
 skeleton = NodePath("../..")
 
 [node name="Player" parent="." instance=ExtResource("1_xkdae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Casa" type="Node3D" parent="."]
+
+[node name="Sala" type="Node3D" parent="Casa"]
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 7.5, -4.76837e-07)
+use_collision = true
+size = Vector3(7, 0.5, 32.2)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 7.5, -12.6)
+use_collision = true
+size = Vector3(10.5, 0.5, 7)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -0.404615, 3.357, 8.5)
+use_collision = true
+size = Vector3(16.7, 0.5, 4)
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -5.00462, -4.38748, -59.55)
+use_collision = true
+size = Vector3(16.7, 0.5, 7.7)
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00461, -7.08748, -83.05)
+use_collision = true
+size = Vector3(113.3, 0.5, 59.1)
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.448, -0.255772, -51.8)
+use_collision = true
+size = Vector3(8.7, 0.5, 23.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8, 7.5, 0)
+use_collision = true
+size = Vector3(1, 16, 8)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.79571, 0)
+operation = 2
+size = Vector3(1, 5.5, 4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 16.1, 7.5, 9.21243)
+use_collision = true
+size = Vector3(1, 16, 15)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 7.9, 26.0124)
+use_collision = true
+size = Vector3(1, 16, 20)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.2, 5)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 7.9, 35.5124)
+use_collision = true
+size = Vector3(1, 16, 24)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 7.9, 21.0124)
+use_collision = true
+size = Vector3(1, 16, 10)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.2, 1)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.500001, 7.9, 30.5124)
+use_collision = true
+size = Vector3(1, 16, 11)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4, 3.9, 21.0124)
+use_collision = true
+size = Vector3(1, 8, 10)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.9, 32.9624)
+use_collision = true
+size = Vector3(1, 8, 15.9)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.65, 3.9, 40.5124)
+use_collision = true
+size = Vector3(1, 8, 14.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3, 3.9, 33.0124)
+use_collision = true
+size = Vector3(1, 8, 16)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.05, 7.9, 25.5124)
+use_collision = true
+size = Vector3(1, 16, 23.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.2, 2.5)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.15, 7.9, 15.8271)
+use_collision = true
+size = Vector3(1, 16, 9.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -25.25, 3.9, 16.3771)
+use_collision = true
+size = Vector3(1, 8, 15.2)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32.65, 3.9, 23.4771)
+use_collision = true
+size = Vector3(1, 8, 15.8)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.45, 3.9, 25.2771)
+use_collision = true
+size = Vector3(1, 8, 18.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.05, 3.9, 25.6771)
+use_collision = true
+size = Vector3(1, 8, 3.4)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39.65, 3.9, 16.4771)
+use_collision = true
+size = Vector3(1, 8, 16.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32.2, 3.9, 27.8771)
+use_collision = true
+size = Vector3(1, 8, 16.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35.9, 3.9, 34.0771)
+use_collision = true
+size = Vector3(1, 8, 24.1)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -31.85, 3.9, 12.3771)
+use_collision = true
+size = Vector3(1, 8, 7.2)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.15, 7.9, 8.46894)
+use_collision = true
+size = Vector3(1, 16, 17.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.2, 5.4)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.45, 7.9, 0.0689446)
+use_collision = true
+size = Vector3(1, 16, 17.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.15, 7.9, -8.4729)
+use_collision = true
+size = Vector3(1, 16, 17.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 3.9, -23.9729)
+use_collision = true
+size = Vector3(1, 8, 11)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3.9, -40.0729)
+use_collision = true
+size = Vector3(1, 8, 34)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 8.9)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 9.5, 3.9, -28.2729)
+use_collision = true
+size = Vector3(1, 8, 24.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.4, 7.9, -20.2229)
+use_collision = true
+size = Vector3(1, 16, 8.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.6, 3.9, -52.3229)
+use_collision = true
+size = Vector3(1, 8, 23.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.75, 0.4, -63.6229)
+use_collision = true
+size = Vector3(1, 15, 32.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 10.6)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.299999, 0.4, -55.5229)
+use_collision = true
+size = Vector3(1, 15, 23.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 11, 0.4, -59.5229)
+use_collision = true
+size = Vector3(1, 15, 9.1)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D47" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 10.8, -3.1, -67.5729)
+use_collision = true
+size = Vector3(0.6, 8, 8.8)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 10.8, -3.1, -80.0229)
+use_collision = true
+size = Vector3(0.6, 8, 3.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D49" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4.35, -3.1, -81.1229)
+use_collision = true
+size = Vector3(0.7, 8, 14.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -10.6, -3.1, -81.1229)
+use_collision = true
+size = Vector3(0.7, 8, 4.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D48" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12.2, -3.1, -65.4729)
+use_collision = true
+size = Vector3(0.6, 8, 4.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12.2, -3.1, -75.8229)
+use_collision = true
+size = Vector3(0.6, 8, 10.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D50" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -2.3, -3.1, -87.8229)
+use_collision = true
+size = Vector3(1, 8, 12.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -8.8, -3.1, -90.7729)
+use_collision = true
+size = Vector3(1, 8, 18.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D70" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 6.5, -3.1, -99.5729)
+use_collision = true
+size = Vector3(1, 8, 31.4)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D71" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 6.5, -3.1, -93.6729)
+use_collision = true
+size = Vector3(1, 8, 18.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D72" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 16.3, -3.1, -89.2729)
+use_collision = true
+size = Vector3(1, 8, 9.8)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D75" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 37.7, -3.1, -95.0729)
+use_collision = true
+size = Vector3(1, 8, 21.4)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D73" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, 27.45, -3.1, -84.8729)
+use_collision = true
+size = Vector3(1, 8, 21.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D78" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, 39.2, -3.1, -111.573)
+use_collision = true
+size = Vector3(1, 8, 15)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D79" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, 42.25, -3.1, -96.8729)
+use_collision = true
+size = Vector3(1, 8, 8.9)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D74" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, 26.95, -3.1, -89.4729)
+use_collision = true
+size = Vector3(1, 8, 11.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D76" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, 21.75, -3.1, -95.6729)
+use_collision = true
+size = Vector3(1, 8, 11.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D77" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, 32.15, -3.1, -100.973)
+use_collision = true
+size = Vector3(1, 8, 22.1)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D80" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, 46.85, -3.1, -104.399)
+use_collision = true
+size = Vector3(1, 8, 15.2481)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -35.05, -3.1, -67.2729)
+use_collision = true
+size = Vector3(1, 8, 45.1)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D53" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -32.85, -3.1, -71.1729)
+use_collision = true
+size = Vector3(1, 8, 40.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -57, -3.1, -89.2729)
+use_collision = true
+size = Vector3(1, 8, 45)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D67" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, -47.3, -3.1, -111.273)
+use_collision = true
+size = Vector3(1, 8, 20.4)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D68" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, -44.95, -3.1, -100.473)
+use_collision = true
+size = Vector3(1, 8, 15.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D69" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, -3.49691e-07, 0, 1, 0, 3.49691e-07, 0, 1, -37.65, -3.1, -105.823)
+use_collision = true
+size = Vector3(1, 8, 10.2)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D61" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -52.7, -3.1, -88.8729)
+use_collision = true
+size = Vector3(1, 8, 34.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D54" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 16.75, -3.1, -71.4729)
+use_collision = true
+size = Vector3(1, 8, 11.3)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 29.2, -3.1, -69.9729)
+use_collision = true
+size = Vector3(1, 8, 18.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D62" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 47.9, -3.1, -67.0229)
+use_collision = true
+size = Vector3(1, 8, 12.7)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 55.7, -3.1, -66.0229)
+use_collision = true
+size = Vector3(1, 8, 25.9)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D59" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 22.9, -3.1, -62.4729)
+use_collision = true
+size = Vector3(1, 8, 19)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D57" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 38.1, -3.1, -61.219)
+use_collision = true
+size = Vector3(1, 8, 18.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D58" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 39.25, -3.1, -53.519)
+use_collision = true
+size = Vector3(1, 8, 33.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D55" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 33.6, -3.1, -78.7729)
+use_collision = true
+size = Vector3(1, 8, 45)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.6, 3.9, -48.2229)
+use_collision = true
+size = Vector3(1, 8, 15.5)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -14.95, 7.9, -23.9711)
+use_collision = true
+size = Vector3(1, 16, 16.2)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -19.031, 7.9, -15.8711)
+use_collision = true
+size = Vector3(1, 16, 8.03796)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -23.5, 7.9, -27.6729)
+use_collision = true
+size = Vector3(1, 16, 24.6)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 16.1, 7.5, -9.21243)
+use_collision = true
+size = Vector3(1, 16, 15)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.600001, 7.5, -15.9124)
+use_collision = true
+size = Vector3(1, 16, 27)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.8, 6.7)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Casa/Sala/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.8, -9.9)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Casa/Sala/CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -9.9)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.529, 7.5, -0.0256252)
+use_collision = true
+size = Vector3(1, 16, 32.7188)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.8, 0)
+operation = 2
+size = Vector3(1.5, 5.5, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Casa/Sala/CSGBox3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2.5)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.600001, 7.5, 15.8876)
+use_collision = true
+size = Vector3(1, 16, 27)
+material = ExtResource("2_mi21f")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.8, -9.9)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Casa/Sala/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -9.9)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Casa/Sala/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.8, 4.6)
+operation = 2
+size = Vector3(1.5, 5.5, 4)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4975, 15.8731, 0.0499988)
+use_collision = true
+size = Vector3(34.6, 1, 31.7)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D81" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.069, 7.743, 28.468)
+use_collision = true
+size = Vector3(65.7, 0.01, 25.135)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D86" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.869, 15.843, 25.7005)
+use_collision = true
+size = Vector3(23.1, 0.01, 19.6)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D87" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.569, 15.843, 0.1505)
+use_collision = true
+size = Vector3(18.1, 0.01, 17.7)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D88" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.969, 15.843, -19.9495)
+use_collision = true
+size = Vector3(18.1, 0.01, 8.3)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D82" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.837, 7.743, 3.568)
+use_collision = true
+size = Vector3(24.7, 0.01, 18.2)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D83" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.437, 7.743, -39.682)
+use_collision = true
+size = Vector3(48, 0.01, 35.2)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D84" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.686934, 1.20498, -87.7825)
+use_collision = true
+size = Vector3(48, 1, 113.3)
+material = ExtResource("3_1tkno")
+
+[node name="CSGBox3D85" type="CSGBox3D" parent="Casa/Sala"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33.9631, 1.20498, -58.4825)
+use_collision = true
+size = Vector3(10.6, 1, 44.4)
+material = ExtResource("3_1tkno")
