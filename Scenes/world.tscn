@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://8qy80gy6vrri"]
+[gd_scene load_steps=28 format=4 uid="uid://8qy80gy6vrri"]
 
 [ext_resource type="Texture2D" uid="uid://dlnhi775ftkfx" path="res://Textures/PIsoMadera/SueloMaderaEstilo3_basecolor.tga" id="1_s3gkv"]
-[ext_resource type="PackedScene" uid="uid://bip1f0us0ut3q" path="res://Scenes/Player.tscn" id="1_xkdae"]
+[ext_resource type="PackedScene" uid="uid://butpe0nv3ifem" path="res://Scenes/Player.tscn" id="1_xkdae"]
 [ext_resource type="Texture2D" uid="uid://302sxs6s3538" path="res://Textures/PIsoMadera/SueloMaderaEstilo3_ambientocclusion.tga" id="2_b5xq0"]
 [ext_resource type="Material" uid="uid://ce0c0xol6lehf" path="res://Materials/black.tres" id="2_mi21f"]
 [ext_resource type="Material" uid="uid://t133mbcce3a7" path="res://Materials/Gray.tres" id="3_1tkno"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dv6w4dr64acuq" path="res://Fbx/AmigoBurbuja/AmigoBurbuja0_occlusionRoughnessMetallic.png" id="12_pyto7"]
 [ext_resource type="Texture2D" uid="uid://b7mew6blo1bkw" path="res://Fbx/AmigoBurbuja/AmigoBurbuja0_emissive.png" id="13_n6wco"]
 [ext_resource type="Texture2D" uid="uid://7d5dxwg6p1p7" path="res://Fbx/AmigoBurbuja/AmigoBurbuja0_normal.png" id="14_o8pqc"]
+[ext_resource type="PackedScene" uid="uid://b5idxp1jm685m" path="res://Scenes/Chandelier.tscn" id="15_q1h82"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tuus3"]
 size = Vector3(100, 1, 100)
@@ -64,21 +65,23 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 1.5
 glow_bloom = 0.3
-glow_blend_mode = 0
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.600374, 0.514151, 0.634901, 1)
 fog_density = 1.0
 fog_depth_begin = 25.0
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.503633, 0.550835, 0.367889, 1)
-volumetric_fog_emission = Color(0.251202, 0.199104, 0.223293, 1)
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.472876, 0.51829, 0.341593, 1)
+volumetric_fog_emission = Color(0.210159, 0.198271, 0.319339, 1)
 volumetric_fog_emission_energy = 0.5
 volumetric_fog_anisotropy = 0.4
-volumetric_fog_detail_spread = 4.0
+volumetric_fog_length = 32.0
 adjustment_enabled = true
 adjustment_brightness = 1.1
 adjustment_contrast = 0.8
@@ -90,6 +93,7 @@ adjustment_color_correction = SubResource("GradientTexture2D_w0f0p")
 resource_name = "AmigoBurbuja0"
 transparency = 4
 diffuse_mode = 3
+albedo_color = Color(1, 1, 1, 0.623529)
 albedo_texture = ExtResource("11_3yo4y")
 metallic = 0.75
 metallic_texture = ExtResource("12_pyto7")
@@ -158,7 +162,7 @@ mesh = SubResource("PlaneMesh_sxqmc")
 skeleton = NodePath("../..")
 
 [node name="Player" parent="." instance=ExtResource("1_xkdae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1933, 1, 0)
 
 [node name="Casa" type="Node3D" parent="."]
 
@@ -777,3 +781,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -3.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.07099, 0)
 mesh = SubResource("ArrayMesh_jejma")
 skeleton = NodePath("")
+
+[node name="Chandelier" parent="." instance=ExtResource("15_q1h82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53922, 11.0547, -0.33505)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chandelier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45068, 0)
+light_color = Color(1, 1, 0.807843, 1)
+light_energy = 1.789
+light_volumetric_fog_energy = 3.141
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 40.0
+omni_range = 15.0
+omni_attenuation = 0.75
