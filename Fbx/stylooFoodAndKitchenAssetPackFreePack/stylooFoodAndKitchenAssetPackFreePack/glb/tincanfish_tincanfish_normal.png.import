@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m87wb1iqh5nr"
+uid="uid://b0hpk7l5fyp3o"
 path.s3tc="res://.godot/imported/tincanfish_tincanfish_normal.png-5cc5d81e32351b4552cdff2f43584464.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "193d0becee6fb9c28d12780bfa196011"
 }
 
 [deps]

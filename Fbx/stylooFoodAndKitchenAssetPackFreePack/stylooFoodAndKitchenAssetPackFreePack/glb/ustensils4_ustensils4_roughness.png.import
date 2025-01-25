@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp4kghysqtg14"
+uid="uid://dcksgyskpn41t"
 path.s3tc="res://.godot/imported/ustensils4_ustensils4_roughness.png-fb43e6b4f49b8dde99ce7b0bc413a8f5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "240ed252488edad068f4ec9c974b4e30"
 }
 
 [deps]

@@ -39,6 +39,8 @@ var StaminaBar
 var StaminaBar2
 var LanternBar
 
+var keys:int = 0
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	StaminaBar = Utils.get_ui().find_child("StaminaBar")
@@ -61,7 +63,7 @@ func _input(event) -> void:
 		if Input.is_action_just_pressed("INTERACT"):
 			var ray = ray_cast_3d.get_collider()
 			if ray is Interactable:
-				ray_cast_3d.get_collider().emit_signal("Interacted")
+				ray_cast_3d.get_collider().interact()
 
 func _physics_process(delta) -> void:
 	

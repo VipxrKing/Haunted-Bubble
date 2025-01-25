@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coi00xehq78yg"
-path.s3tc="res://.godot/imported/Texture8x8.png-880c8824638530c453bd5a67a33c458c.s3tc.ctex"
+uid="uid://xx6t3e3wrjax"
+path="res://.godot/imported/VanditGames.png-cb9ef87f8c8d2fd15a42ec7572f19c8b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fbx/kitchen_fbx/Texture8x8.png"
-dest_files=["res://.godot/imported/Texture8x8.png-880c8824638530c453bd5a67a33c458c.s3tc.ctex"]
+source_file="res://Textures/VanditGames.png"
+dest_files=["res://.godot/imported/VanditGames.png-cb9ef87f8c8d2fd15a42ec7572f19c8b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayupwb6fnco5"
+uid="uid://dhhljiqkk6mbe"
 path.s3tc="res://.godot/imported/yaourt_yaourt_roughness.png-c98c55fd7fab23b7f455b2c78d78b8dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "6b9ce5629f593a18373708a5daaec07f"
 }
 
 [deps]

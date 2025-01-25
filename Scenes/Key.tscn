@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcxp471x6piew"]
+
+[ext_resource type="Script" path="res://Scenes/key.gd" id="1_loxcb"]
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_svdjg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1i0on"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_glr6n"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xc0kk"]
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqffi"]
+size = Vector3(0.170654, 0.373413, 0.0527344)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fotis"]
+size = Vector3(0.243115, 0.44314, 0.129248)
+
+[node name="Key" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+linear_damp = 0.1
+script = ExtResource("1_loxcb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.041531, 0, 0, 0, 0.2325, 0, 0, 0, 0.03, 0, 0.0695237, 0)
+mesh = SubResource("BoxMesh_1i0on")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.103827, 0, 0, 0, 0.03255, 0, 0, 0, 0.018, 0.0356239, 0.15585, 0)
+mesh = SubResource("BoxMesh_glr6n")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.103827, 0, 0, 0, 0.03255, 0, 0, 0, 0.018, 0.0356239, 0.112684, 0)
+mesh = SubResource("BoxMesh_glr6n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15925, 0, 0, 0, -2.08178e-09, 0.15925, 0, -0.0476255, -6.96104e-09, 0, -0.1, 0)
+mesh = SubResource("CylinderMesh_xc0kk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00305176, 0.00518799, 0)
+shape = SubResource("BoxShape3D_oqffi")
+
+[node name="Interactable" parent="." instance=ExtResource("2_svdjg")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00393069, -0.00352781, -0.00261228)
+shape = SubResource("BoxShape3D_fotis")
+
+[connection signal="Interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]

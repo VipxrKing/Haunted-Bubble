@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2hvwxts58mr"
+uid="uid://d3btf8isehico"
 path.s3tc="res://.godot/imported/ustensils6_ustensils6_color.png-68e536ffca85bc5e7e8d4b5316d4a65d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "4c313004a0b589f61a2e955915290c3b"
 }
 
 [deps]
