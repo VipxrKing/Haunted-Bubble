@@ -1,14 +1,606 @@
-[gd_scene load_steps=3 format=3 uid="uid://suv2ur61xwjm"]
+[gd_scene load_steps=28 format=3 uid="uid://suv2ur61xwjm"]
 
 [ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
-[ext_resource type="PackedScene" uid="uid://8qy80gy6vrri" path="res://Scenes/world.tscn" id="2_epdxc"]
+[ext_resource type="PackedScene" uid="uid://dcebu7qbmi4e1" path="res://Scenes/main_menu.tscn" id="2_0tl4a"]
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="2_bpo23"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m21a5"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ychwl"]
+resource_name = "IN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.026, 0, 0.13, 0.560784), Color(0.026, 0, 0.13, 0.560784)]
+}
+
+[sub_resource type="Animation" id="Animation_yjpko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.026, 0, 0.13, 0.560784)]
+}
+
+[sub_resource type="Animation" id="Animation_b8t34"]
+resource_name = "OUT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.026, 0, 0.13, 0), Color(0.026, 0, 0.13, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmjfn"]
+_data = {
+"IN": SubResource("Animation_ychwl"),
+"OUT": SubResource("Animation_b8t34"),
+"RESET": SubResource("Animation_yjpko")
+}
+
+[sub_resource type="Gradient" id="Gradient_7ri8r"]
+colors = PackedColorArray(0.344043, 0.543977, 0.992554, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tv1ig"]
+noise_type = 2
+frequency = 0.013
+fractal_type = 0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6nd0s"]
+width = 800
+height = 100
+color_ramp = SubResource("Gradient_7ri8r")
+noise = SubResource("FastNoiseLite_tv1ig")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c3afc"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_4ig8p"]
+resource_name = "IN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.13, 0, 0.00216663, 0.560784), Color(0.13, 0, 0.00216663, 0.560784)]
+}
+
+[sub_resource type="Animation" id="Animation_t8wby"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13, 0, 0.00216663, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wmvl8"]
+resource_name = "OUT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.13, 0, 0.00216663, 0), Color(0.13, 0, 0.00216663, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pumgg"]
+_data = {
+"IN": SubResource("Animation_4ig8p"),
+"OUT": SubResource("Animation_wmvl8"),
+"RESET": SubResource("Animation_t8wby")
+}
+
+[sub_resource type="Gradient" id="Gradient_2j1as"]
+colors = PackedColorArray(0.99, 0.3465, 0.357225, 1, 0, 0, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7hlof"]
+width = 800
+height = 100
+color_ramp = SubResource("Gradient_2j1as")
+noise = SubResource("FastNoiseLite_tv1ig")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6ftu8"]
+width = 800
+height = 100
+color_ramp = SubResource("Gradient_2j1as")
+noise = SubResource("FastNoiseLite_tv1ig")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhshx"]
+font_size = 128
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_u6vc6"]
+colors = PackedColorArray(0.187176, 0.187176, 0.187176, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0hir"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2bxjn"]
+color_ramp = SubResource("Gradient_u6vc6")
+noise = SubResource("FastNoiseLite_c0hir")
+
+[sub_resource type="Animation" id="Animation_iu3j6"]
+resource_name = "FadeBlack"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3sujr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yd8pc"]
+resource_name = "UnfadeBlack"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LoadingScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5hw2"]
+_data = {
+"FadeBlack": SubResource("Animation_iu3j6"),
+"RESET": SubResource("Animation_3sujr"),
+"UnfadeBlack": SubResource("Animation_yd8pc")
+}
 
 [node name="SceneManager" type="Node3D"]
 script = ExtResource("1_igokh")
 
 [node name="CurrentScene" type="Node3D" parent="."]
 
-[node name="World" parent="CurrentScene" instance=ExtResource("2_epdxc")]
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 3
+script = ExtResource("2_bpo23")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LanternBar" type="ProgressBar" parent="UI/HUD"]
+modulate = Color(1, 1, 0.439216, 1)
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -183.0
+offset_right = -28.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+value = 100.0
+fill_mode = 3
+
+[node name="StaminaBar" type="ProgressBar" parent="UI/HUD"]
+modulate = Color(0, 1, 0.433333, 0)
+custom_minimum_size = Vector2(805, 15)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -55.0
+offset_right = 795.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+show_percentage = false
+
+[node name="StaminaBar2" type="ProgressBar" parent="UI/HUD"]
+modulate = Color(0, 1, 0.433333, 0)
+custom_minimum_size = Vector2(805, 15)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -800.0
+offset_top = -55.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="CrossHair" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_m21a5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -94.0
+offset_right = 121.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.026, 0, 0.13, 0.560784)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PauseMenu/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_vmjfn")
+}
+playback_default_blend_time = 1.0
+
+[node name="Resume" type="Button" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -199.0
+offset_right = 400.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_6nd0s")
+
+[node name="Label" type="Label" parent="UI/PauseMenu/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+label_settings = SubResource("LabelSettings_c3afc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -67.0
+offset_right = 400.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_6nd0s")
+
+[node name="Label" type="Label" parent="UI/PauseMenu/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_c3afc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 64.0
+offset_right = 400.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_6nd0s")
+
+[node name="Label" type="Label" parent="UI/PauseMenu/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game :C"
+label_settings = SubResource("LabelSettings_c3afc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/DeathScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -94.0
+offset_right = 121.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.13, 0, 0.00216663, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/DeathScreen/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_pumgg")
+}
+playback_default_blend_time = 1.0
+
+[node name="MainMenu" type="Button" parent="UI/DeathScreen"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -27.0
+offset_right = 400.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_7hlof")
+
+[node name="Label" type="Label" parent="UI/DeathScreen/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_c3afc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="UI/DeathScreen"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 104.0
+offset_right = 400.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_6ftu8")
+
+[node name="Label" type="Label" parent="UI/DeathScreen/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game :C"
+label_settings = SubResource("LabelSettings_c3afc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/DeathScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -710.0
+offset_top = 170.0
+offset_right = 710.0
+offset_bottom = 345.0
+grow_horizontal = 2
+text = "They're Just Bubbless..."
+label_settings = SubResource("LabelSettings_vhshx")
+
+[node name="CurrentOverlay" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="MainMenu" parent="CurrentOverlay" instance=ExtResource("2_0tl4a")]
+mouse_filter = 1
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="LoadingScreen" type="TextureRect" parent="TransitionLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -217.0
+offset_right = 201.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_2bxjn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_s5hw2")
+}
+
+[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/MainMenu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/Quit" to="UI" method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/DeathScreen/MainMenu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UI/DeathScreen/Quit" to="UI" method="_on_quit_pressed"]

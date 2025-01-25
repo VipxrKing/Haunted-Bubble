@@ -29,9 +29,22 @@ var lantern:bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var sprinting:bool = false
+var sprint_blocked:bool = false
+var Stamina:float = 5.0
+
+var LanternBattery:float = 1000.0
+
+var StaminaBar
+var StaminaBar2
+var LanternBar
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	StaminaBar = Utils.get_ui().find_child("StaminaBar")
+	StaminaBar2 = Utils.get_ui().find_child("StaminaBar2")
+	LanternBar = Utils.get_ui().find_child("LanternBar")
+	
 func _input(event) -> void:
 	if INPUT:
 		if event is InputEventMouseMotion:
@@ -40,14 +53,40 @@ func _input(event) -> void:
 			head.rotation.x = clamp(head.rotation.x,deg_to_rad(-89),deg_to_rad(89))
 	
 		if Input.is_action_just_pressed("FLASHLIGHT"):
-			if lantern: $Head/Lantern/AnimationPlayer.play("OFF")
-			else: $Head/Lantern/AnimationPlayer.play("ON")
-			lantern = !lantern
+			if !Utils.custom_equal_aprox_float(LanternBattery,0.0):
+				if lantern: $Head/Lantern/AnimationPlayer.play("OFF")
+				else: $Head/Lantern/AnimationPlayer.play("ON")
+				lantern = !lantern
 		
 		if Input.is_action_just_pressed("INTERACT"):
-			ray_cast_3d.get_collider()
+			var ray = ray_cast_3d.get_collider()
+			if ray is Interactable:
+				ray_cast_3d.get_collider().emit_signal("Interacted")
 
 func _physics_process(delta) -> void:
+	
+	StaminaBar.value = remap(Stamina,0,5,0,100)
+	StaminaBar2.value = remap(Stamina,0,5,0,100)
+	LanternBar.value = remap(LanternBattery,0,1000,0,100)
+	
+	if lantern:
+		if !Utils.custom_equal_aprox_float(LanternBattery,0.0):
+				LanternBattery = LanternBattery - 0.1
+		else:
+			lantern = false
+			$Head/Lantern/AnimationPlayer.play("TURN_OFF")
+	if !sprinting:
+		if !Utils.custom_equal_aprox_float(Stamina,5.0):
+			Stamina = lerp(Stamina,5.0,delta)
+			Utils.get_ui().tween_stamina_bars(true)
+		else:
+			sprint_blocked = false
+			Utils.get_ui().tween_stamina_bars(false)
+	else:
+		if !Utils.custom_equal_aprox_float(Stamina,0.0):
+			Stamina = lerp(Stamina,0.0,delta)
+	
+	
 	if INPUT:
 		apply_controller_camera_rotation()
 		
@@ -57,12 +96,22 @@ func _physics_process(delta) -> void:
 		else:
 			head.position.y = lerp(head.position.y,1.8,delta*LERP_SPEED)
 			if Input.is_action_pressed("SPRINT"):
-				CURRENT_SPEED = SPRINTING_SPEED
-				if DIRECTION:
-					head.tween_fov(true)
+				if !Utils.custom_equal_aprox_float(Stamina,0.0) and !sprint_blocked:
+					sprinting = true
+					Utils.get_ui().tween_stamina_bars(true)
+					CURRENT_SPEED = SPRINTING_SPEED
+					if DIRECTION:
+						head.tween_fov(true)
+					else:
+						head.tween_fov(false)
 				else:
+					sprint_blocked = true
+					sprinting = false
+					CURRENT_SPEED = WALKING_SPEED
 					head.tween_fov(false)
+					
 			else:
+				sprinting = false
 				CURRENT_SPEED = WALKING_SPEED
 				head.tween_fov(false)
 		# Add the gravity.
@@ -98,3 +147,29 @@ func apply_controller_camera_rotation() -> void:
 		rotate_y(deg_to_rad(-controller_input_dir.x * SENS_CONTROLLER))
 		head.rotate_x(deg_to_rad(-controller_input_dir.y * SENS_CONTROLLER))
 		head.rotation.x = clamp(head.rotation.x,deg_to_rad(-89),deg_to_rad(89))
+
+func add_lantern_battery(quantity:float):
+	LanternBattery += quantity
+	if LanternBattery > 1000: LanternBattery = 1000
+
+func _on_random_timer_timeout() -> void:
+	if LanternBar.value < 20:
+		if lantern: $Head/Lantern/AnimationPlayer.play("BLINK")
+		if randf() > 0.5:
+			await get_tree().create_timer(0.3).timeout
+			if lantern: $Head/Lantern/AnimationPlayer.play("BLINK")
+		$Head/Lantern/RandomTimer.wait_time = randf_range(1.0,5.0)
+
+func death():
+	INPUT = false
+	Utils.get_ui().death()
+	var tween:Tween = create_tween()
+	tween.tween_property(head,"rotation:x",deg_to_rad(0),0.5)
+	$Head/Lantern/Idler.stop()
+	$Head/AnimationPlayer.play("Death")
+	
+	
+func death_finish():
+	if lantern: $Head/Lantern/AnimationPlayer.play("TURN_OFF")
+	await get_tree().create_timer(2.5).timeout
+	Utils.get_ui().death_finish()
