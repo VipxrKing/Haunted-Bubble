@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://dsil3o7wom1me"]
+[gd_scene load_steps=12 format=4 uid="uid://dsil3o7wom1me"]
 
-[ext_resource type="Material" uid="uid://cr35py5yx8oiv" path="res://Fbx/HouseAndProps_AssetPack_Godot/LoafbrrAssets/HouseAndPropsPack/Material/Doors.material" id="1_6ancf"]
+[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="1_m20cj"]
+[ext_resource type="Material" uid="uid://cr35py5yx8oiv" path="res://Fbx/HouseAndProps_AssetPack_Godot/LoafbrrAssets/HouseAndPropsPack/Material/Doors.material" id="2_sh8jn"]
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="3_8q5cr"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_12qdd"]
 _surfaces = [{
@@ -26,7 +28,7 @@ _surfaces = [{
 "index_count": 684,
 "index_data": PackedByteArray("BwADAAIAAwAXABoAFwAHABUAAwAHABcABAAJAAEABAALAAkAAAANAAUAAAAIAA0ADAAPAAoADwASABEAEgAMAB0ADwAMABIABgAQABYABgAOABAAFgATABgAFgAQABMAGQAfABwAGQAUAB8AGwALAAQAGwAeAAsAXAAlACIAXAAoACUAIAAqAF4AIAAjACoAKwAvAC0ALwA1ADMANQA5ADcAOQA/AD0APwBCAEEAQgBKAEgASgBOAEwATgBSAFAAUgBWAFQAVgAkACYAJAAvACsALwA5ADUAOQBCAD8AQgBOAEoATgBWAFIAVgAvACQALwBCADkAQgBWAE4ALwBWAEIAXQAsAGAAXQApACwAYAAuAGIAYAAsAC4AYgAyAGQAYgAuADIAZAA0ADAAZAAyADQAMAA2AGYAMAA0ADYAZgA4ADoAZgA2ADgAOgA8AGgAOgA4ADwAaAA+AGoAaAA8AD4AagBAAGwAagA+AEAAbABDAEUAbABAAEMARQBJAG8ARQBDAEkAbwBLAEcAbwBJAEsARwBNAHEARwBLAE0AcQBPAHMAcQBNAE8AcwBRAHUAcwBPAFEAdQBTAHcAdQBRAFMAdwBVAHkAdwBTAFUAeQBXAFkAeQBVAFcAWQAnAFsAWQBXACcAYwBfAGEAXwBaACEAWgB4AFgAeAB0AHYAdABwAHIAcABuAEYAbgBtAEQAbQBpAGsAaQBnADsAZwBlADEAZQBfAGMAXwB4AFoAeABwAHQAcABtAG4AbQBnAGkAZwBfAGUAXwBwAHgAcABnAG0AXwBnAHAAgQB9AHwAfQCRAJQAkQCBAI8AfQCBAJEAfgCDAHsAfgCFAIMAegCHAH8AegCCAIcAhgCJAIQAiQCMAIsAjACGAJcAiQCGAIwAgACKAJAAgACIAIoAkACNAJIAkACKAI0AkwCZAJYAkwCOAJkAlQCFAH4AlQCYAIUAnQCkAKkAnQCbAKQAnAC3AKEAnACeALcAowCyAKcAsgCfALQAnwCjAJoAsgCjAJ8AqACmAKsAqACiAKYAqgCwAKwAqgClALAArQCzAK4ArQCxALMArwCgALYArwC1AKAAuwC/ALkAvwDXANsA1wC7AM0AvwC7ANcAvADCAMcAvAC6AMIAwQC+AMUAwQC4AL4AxgDSAMgA0gDEANkAxADGAMAA0gDGAMQAzgDHAMkAzgC8AMcAywDSANQAywDIANIA3wDKAMwA3wDPAMoA0wDVANwA0wDQANUA0QDaANYA0QDYANoA2AC9ANoA2ADDAL0AzQDdANcAzQDeAN0A5QDqAOIA5QDtAOoA4AD1AOMA4ADmAPUA6QDoAOEA6QDwAOgA7gDxAOsA7gD0APEA8gDnAO8A8gD2AOcA5ADzAOwA5AD3APMA+wACAfkA+wAHAQIB+gAVAfwA+gD/ABUBEAEBAQUBAQH9APgA/QAQARIBAQEQAf0ABgEEAQABBgEJAQQBCAEOAQMBCAEKAQ4BCwERAQ8BCwEMAREBDQH+ABMBDQEUAf4AHQEZARcBGQE1ASsBNQEdATkBGQEdATUBGgEgARgBGgElASABHwEcARYBHwEjARwBMAEkASYBJAEiAR4BIgEwATcBJAEwASIBLAElARoBLAEnASUBKQEwASYBKQEyATABPQEoAS0BPQEqASgBMQEzAS4BMQE6ATMBLwE4ATYBLwE0ATgBNgEbASEBNgE4ARsBKwE7ATwBKwE1ATsBQwFIAUsBQwFAAUgBPgFTAUQBPgFBAVMBRwFGAU4BRwE/AUYBTAFPAVIBTAFJAU8BUAFFAVQBUAFNAUUBQgFRAVUBQgFKAVEB"),
 "lods": [0.342144, PackedByteArray("BwADAAIAAwAHABcAFwAHABUAAwAXABoABABXAVYBBAALAFcBWQELAAQAAAANAAUAAAAIAA0ADAAPAAoADwAMABIAEgAMAB0ADwASABEABgAQABYABgAOABAAFgAQABMAFgATABgAGQAfABwAGQAUAB8AWgFbAVgBXAAlACIAXAAoACUAIAAqAF4AIAAjACoASAAkACYAJABIACsAXQBdAWIAYwFdAVwBXQApAF4BYAFfAWEBYgEnAFsAXwBaACEAXwBwAFoAXwBjAHAAgQB9AHwAfQCBAJEAkQCBAI8AfQCRAJQAfgBlAWQBfgCFAGUBZwGFAH4AegCHAH8AegCCAIcAhgCJAIQAiQCGAIwAjACGAJcAiQCMAIsAgACKAJAAgACIAIoAkACKAI0AkACNAJIAkwCZAJYAkwCOAJkAaAFpAWYBnQCkAKkAnQCbAKQAnAC3AKEAnACeALcAowCyAKcAsgCjAJ8AnwCjAJoAsgCfALQAqACmAKsAqACiAKYAqgCwAKwAqgClALAArQCzAK4ArQBsAbMArwBqAbYArwC1AGsBzQC/ALkAvwDNANcAzQDdANcAzQDeAN0AzgDCAMkAzgC6AMIA3wDOAMkA3wDJAMwAwQC+AMUAwQC4AL4AxADIAMAA2QDIAMQAywDIANkAywDZANQA0wDVANwA0wDYANUA2AC9ANUA2ADDAL0A5QDqAOIA5QDtAOoA4AD1AOMA4ADmAPUA6QDoAOEA6QDwAOgA7gDxAOsA7gD0APEA8gDnAO8A8gD2AOcA5ADzAOwA5AD3APMA+wACAfkA+wAHAQIB+gAVAfwA+gD/ABUBEAEBAQUBAQEQAf0A/QAQARIBAQH9APgABgEEAQABBgEJAQQBCAEOAQMBCAEKAQ4BbgFwAW8BbgEMAXABDQFtARMBDQEUAW0BHQEZARcBGQEdATkBGQE5ATsBGQE7ATwBGgEgARgBGgElASABPQElARoBPQEqASUBHwEcARYBHwEjARwBJAEiAR4BJAEwASIBKQEwASQBKQEyATABMQE4AS4BMQE6ATgBLgE4ARsBLgEbASEBQwFIAUsBQwFAAUgBPgFTAUQBPgFBAVMBRwFGAU4BRwE/AUYBTAFPAVIBTAFJAU8BUAFFAVQBUAFNAUUBQgFRAVUBQgFKAVEB")],
-"material": ExtResource("1_6ancf"),
+"material": ExtResource("2_sh8jn"),
 "name": "Doors",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -36,12 +38,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_12qdd")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rk78"]
+size = Vector3(1.17109, 2.34867, 0.24664)
+
 [sub_resource type="Animation" id="Animation_6krl3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Door_Arche_1:rotation")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,18 +56,36 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qitxi"]
-resource_name = "open"
+[sub_resource type="Animation" id="Animation_n4yob"]
+resource_name = "close"
+length = 0.5
 step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Door_Arche_1:rotation")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2, 0.5),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qitxi"]
+resource_name = "open"
+length = 0.5
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
 }
@@ -70,26 +93,40 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pg2xl"]
 _data = {
 "RESET": SubResource("Animation_6krl3"),
+"close": SubResource("Animation_n4yob"),
 "open": SubResource("Animation_qitxi")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4rk78"]
-size = Vector3(1.17109, 2.34867, 0.24664)
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mqme"]
+size = Vector3(1.20727, 0.675159, 0.611481)
 
-[node name="Door_Arche_1_holder" type="StaticBody3D"]
+[node name="Door_Arche_01" type="StaticBody3D"]
+script = ExtResource("1_m20cj")
+metadata/_edit_group_ = true
 
 [node name="Mesh" type="Node3D" parent="."]
 
 [node name="Door_Arche_1" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58054, 0, -0.256691)
 mesh = SubResource("ArrayMesh_q7jqk")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.619175, 1.15853, -0.00238563)
+shape = SubResource("BoxShape3D_4rk78")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pg2xl")
 }
+playback_default_blend_time = 0.1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004861, 1.15853, -0.220514)
-shape = SubResource("BoxShape3D_4rk78")
+[node name="Interactable" parent="." instance=ExtResource("3_8q5cr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.633771, 1.19965, 0.0414021)
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0313683, -0.0260563, 0)
+shape = SubResource("BoxShape3D_8mqme")
+
+[connection signal="Interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]
