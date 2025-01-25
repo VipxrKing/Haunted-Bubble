@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb2kiakcv0w26"
+uid="uid://b0jtbsnw3dy0c"
 path.s3tc="res://.godot/imported/toaster_toaster_normal.png-dc4bfb0c1ca27c45c0c6f55c70c8b69b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "24b4dabf4fce314262618b7146fc0164"
 }
 
 [deps]

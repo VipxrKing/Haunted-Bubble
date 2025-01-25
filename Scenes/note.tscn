@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://iu5f7xul0ll7"]
+
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="1_dvvwp"]
+[ext_resource type="Script" path="res://Scenes/note.gd" id="1_p32i8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4b7ni"]
+size = Vector3(0.2, 0.001, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0j18"]
+size = Vector3(0.324501, 0.0671387, 0.424377)
+
+[node name="Note" type="Node3D"]
+script = ExtResource("1_p32i8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4b7ni")
+
+[node name="Interactable" parent="." instance=ExtResource("1_dvvwp")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00253677, 0.00158691, 0.000762939)
+shape = SubResource("BoxShape3D_u0j18")
+
+[connection signal="Interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]

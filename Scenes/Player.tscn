@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://butpe0nv3ifem"]
+[gd_scene load_steps=25 format=4 uid="uid://butpe0nv3ifem"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_70p7u"]
 [ext_resource type="Script" path="res://Scenes/head.gd" id="2_b7xwp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cx2x50xxohfbb" path="res://Mesh/Linterna_1.png" id="4_jk4cf"]
 [ext_resource type="Texture2D" uid="uid://c41gp7d3bokpj" path="res://Mesh/Linterna_3.png" id="5_2kjbe"]
 [ext_resource type="Texture2D" uid="uid://cqgsd2xc7851y" path="res://Mesh/Linterna_2.png" id="6_of51y"]
+[ext_resource type="Texture2D" uid="uid://ddogb3fk7aphm" path="res://Textures/flashlight-icon-android-17.png" id="7_1um4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bavd1"]
 resource_name = "standardSurface1"
@@ -87,13 +88,42 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.23936, -0.0692737, -1.20177)]
+"values": [Vector3(1.239, -0.55, -1.202)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwii"]
 _data = {
 "Idle": SubResource("Animation_s7ek1"),
 "RESET": SubResource("Animation_s3rcn")
+}
+
+[sub_resource type="Animation" id="Animation_k4tlq"]
+resource_name = "BLINK"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3.0, 0.0, 3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5.0, 0.0, 5.0]
 }
 
 [sub_resource type="Animation" id="Animation_q6a8i"]
@@ -177,35 +207,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [5.0]
-}
-
-[sub_resource type="Animation" id="Animation_k4tlq"]
-resource_name = "BLINK"
-length = 0.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [3.0, 0.0, 3.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission_energy_multiplier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [5.0, 0.0, 5.0]
 }
 
 [sub_resource type="Animation" id="Animation_vlp7y"]
@@ -394,7 +395,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 doppler_tracking = 2
 
 [node name="Lantern" type="Node3D" parent="Head"]
-transform = Transform3D(0.00456717, -9.56082e-10, -6.89624e-10, 6.89624e-10, -4.78041e-10, 0.00456717, -3.99275e-10, -0.0109363, -1.99637e-10, 1.239, -0.55, -1.202)
+transform = Transform3D(0.00456717, -9.56082e-10, -6.89624e-10, 6.89623e-10, -3.95893e-08, 0.00456717, -3.99277e-10, -0.0109363, -1.65331e-08, 1.239, -0.55, -1.202)
 rotation_order = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Lantern"]
@@ -403,11 +404,12 @@ mesh = SubResource("ArrayMesh_f0fow")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Lantern"]
-transform = Transform3D(1, -2.04397e-07, 8.9345e-15, 0, -4.37114e-08, -1, 2.04397e-07, 1, -4.37114e-08, 0.0810242, 19.6401, 0)
+transform = Transform3D(218.954, -4.50313e-05, -8.58307e-06, 9.53674e-07, -1.04904e-05, -91.4386, 4.48525e-05, 218.954, -2.76566e-05, 0.15593, 20.1137, -0.0240784)
 light_color = Color(0.921569, 0.941176, 0.737255, 1)
 light_energy = 3.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 8.0
+light_projector = ExtResource("7_1um4g")
 light_specular = 5.0
 shadow_enabled = true
 spot_range = 30.0
@@ -418,7 +420,6 @@ spot_angle = 25.0
 libraries = {
 "": SubResource("AnimationLibrary_ikwii")
 }
-autoplay = "Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Lantern"]
 libraries = {
@@ -428,11 +429,6 @@ autoplay = "OFF"
 
 [node name="RandomTimer" type="Timer" parent="Head/Lantern"]
 autostart = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Head/Lantern"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.477, 18.2877, -43.7908)
-omni_range = 1.0
-omni_attenuation = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
 libraries = {
@@ -448,5 +444,10 @@ mesh = SubResource("CapsuleMesh_idehi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_7f3r8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.4)
+omni_range = 2.0
+omni_attenuation = 0.5
 
 [connection signal="timeout" from="Head/Lantern/RandomTimer" to="." method="_on_random_timer_timeout"]

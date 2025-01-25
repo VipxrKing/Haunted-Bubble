@@ -1,13 +1,25 @@
-[gd_scene load_steps=28 format=3 uid="uid://suv2ur61xwjm"]
+[gd_scene load_steps=30 format=3 uid="uid://suv2ur61xwjm"]
 
 [ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
 [ext_resource type="PackedScene" uid="uid://dcebu7qbmi4e1" path="res://Scenes/main_menu.tscn" id="2_0tl4a"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="2_bpo23"]
+[ext_resource type="Texture2D" uid="uid://bbc6ayqfyot" path="res://Textures/key.png" id="3_ee8ul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m21a5"]
 font_size = 64
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c3afc"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gts6t"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+outline_color = Color(0.47, 0.323125, 0.1175, 1)
 
 [sub_resource type="Animation" id="Animation_ychwl"]
 resource_name = "IN"
@@ -24,21 +36,6 @@ tracks/0/keys = {
 "values": [Color(0.026, 0, 0.13, 0.560784), Color(0.026, 0, 0.13, 0.560784)]
 }
 
-[sub_resource type="Animation" id="Animation_yjpko"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.026, 0, 0.13, 0.560784)]
-}
-
 [sub_resource type="Animation" id="Animation_b8t34"]
 resource_name = "OUT"
 tracks/0/type = "value"
@@ -52,6 +49,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.026, 0, 0.13, 0), Color(0.026, 0, 0.13, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yjpko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.026, 0, 0.13, 0.560784)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vmjfn"]
@@ -76,11 +88,6 @@ height = 100
 color_ramp = SubResource("Gradient_7ri8r")
 noise = SubResource("FastNoiseLite_tv1ig")
 
-[sub_resource type="LabelSettings" id="LabelSettings_c3afc"]
-font_size = 64
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_4ig8p"]
 resource_name = "IN"
 tracks/0/type = "value"
@@ -96,21 +103,6 @@ tracks/0/keys = {
 "values": [Color(0.13, 0, 0.00216663, 0.560784), Color(0.13, 0, 0.00216663, 0.560784)]
 }
 
-[sub_resource type="Animation" id="Animation_t8wby"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.13, 0, 0.00216663, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_wmvl8"]
 resource_name = "OUT"
 tracks/0/type = "value"
@@ -124,6 +116,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.13, 0, 0.00216663, 0), Color(0.13, 0, 0.00216663, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t8wby"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.13, 0, 0.00216663, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pumgg"]
@@ -230,7 +237,6 @@ layer = 3
 script = ExtResource("2_bpo23")
 
 [node name="HUD" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,6 +316,69 @@ text = "+"
 label_settings = SubResource("LabelSettings_m21a5")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Keys" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -127.0
+offset_right = 74.0
+offset_bottom = -39.0
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_c3afc")
+vertical_alignment = 1
+
+[node name="Key" type="TextureRect" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = -145.0
+offset_right = 274.0
+offset_bottom = -92.0
+grow_vertical = 0
+rotation = 1.61044
+texture = ExtResource("3_ee8ul")
+expand_mode = 1
+
+[node name="Note" type="Label" parent="UI/HUD"]
+visible = false
+custom_minimum_size = Vector2(500, 700)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -350.0
+offset_right = 250.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Texto por defecto de las notas, uno dos tres cuatro cinco seis siete ocho nueve diez eins zwei drei vier funf sechs sieben acht neun zehn elf zwolf dreizehn vierzehn funfzehn sechzehn siebzehn achtzehn neunzehn zwanzig eins und zwanzig zwei und zwanzig..."
+label_settings = SubResource("LabelSettings_gts6t")
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/HUD/Note"]
+show_behind_parent = true
+custom_minimum_size = Vector2(540, 740)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -350.0
+offset_right = 250.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PauseMenu" type="Control" parent="UI"]
 visible = false

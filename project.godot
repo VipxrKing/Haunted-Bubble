@@ -13,6 +13,7 @@ config_version=5
 config/name="HauntedBubble"
 run/main_scene="res://Scenes/scene_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://Textures/VanditGames2.png"
 config/icon="res://icon.svg"
 
 [autoload]

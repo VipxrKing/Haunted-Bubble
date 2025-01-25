@@ -53,11 +53,13 @@ func death():
 	$HUD.visible = true
 	$PauseMenu.visible = false
 	
-
 func death_finish():
 	$DeathScreen.visible = true
 	$DeathScreen/ColorRect/AnimationPlayer.play("IN")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func update_keys():
+	$HUD/Keys.text = str(Utils.get_player().keys)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

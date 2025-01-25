@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c65aakky5xy4a"
+uid="uid://bb0re82sicktn"
 path.s3tc="res://.godot/imported/knife2_knife2_color.png-6d5e437bcbfaa6fc9ea5b2ae22221d7d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "60431945cf51b905b5fbb7e8e4c19021"
 }
 
 [deps]
