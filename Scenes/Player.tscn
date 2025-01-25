@@ -73,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.239, -0.55, -1.202), Vector3(1.239, -0.45, -1.202)]
+"values": [Vector3(0.873287, -0.567948, -1.05889), Vector3(0.873287, -0.635616, -1.05889)]
 }
 
 [sub_resource type="Animation" id="Animation_s3rcn"]
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.239, -0.55, -1.202)]
+"values": [Vector3(0.873287, -0.567948, -1.05889)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ikwii"]
@@ -249,30 +249,30 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_3yctf"]
 resource_name = "Death"
-length = 2.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.766667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.698132)]
+"values": [Vector3(0, 1.8, 0), Vector3(0, 0.823201, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.333333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.8, 0), Vector3(0, 0.669932, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.146224), Vector3(0, 0, -0.242828)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -281,10 +281,10 @@ tracks/2/path = NodePath("Lantern:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 2, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.7, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.239, -0.55, -1.202), Vector3(0.815787, -0.045635, -1.202), Vector3(0.279556, -0.495587, -1.202), Vector3(0.202952, -0.559865, -1.202)]
+"values": [Vector3(0.873287, -0.567948, -1.05889), Vector3(-0.631986, -0.940829, -1.05889)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -293,10 +293,10 @@ tracks/3/path = NodePath("Lantern:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 2, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.7, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-1.5708, -1.50996e-07, -8.74228e-08), Vector3(-1.5708, -1.50996e-07, -8.74228e-08), Vector3(-1.5708, -6.28319, 0), Vector3(-1.5708, -6.45772, 0)]
+"values": [Vector3(-1.51844, 0, 0.0733038), Vector3(-1.61578, -2.47006, -0.196836)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -305,7 +305,7 @@ tracks/4/path = NodePath("..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2.5),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -318,26 +318,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 1.8, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.8, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -349,7 +349,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.239, -0.55, -1.202)]
+"values": [Vector3(0.873287, -0.567948, -1.05889)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -361,7 +361,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.5708, -1.50996e-07, 8.74228e-08)]
+"values": [Vector3(-1.51844, 0, 0.0733038)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1i04h"]
@@ -395,7 +395,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 doppler_tracking = 2
 
 [node name="Lantern" type="Node3D" parent="Head"]
-transform = Transform3D(0.00456717, -9.56082e-10, -6.89624e-10, 6.89623e-10, -3.95893e-08, 0.00456717, -3.99277e-10, -0.0109363, -1.65331e-08, 1.239, -0.55, -1.202)
+transform = Transform3D(0.0045549, -0.000800956, 0, 1.75047e-05, 0.000570787, 0.0045609, -0.000334032, -0.010892, 0.00023901, 0.873287, -0.567948, -1.05889)
 rotation_order = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Lantern"]
@@ -404,7 +404,7 @@ mesh = SubResource("ArrayMesh_f0fow")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Lantern"]
-transform = Transform3D(218.954, -4.50313e-05, -8.58307e-06, 9.53674e-07, -1.04904e-05, -91.4386, 4.48525e-05, 218.954, -2.76566e-05, 0.15593, 20.1137, -0.0240784)
+transform = Transform3D(1, -2.04849e-07, 8.95423e-15, 0, -4.37114e-08, -1, 2.04849e-07, 1, -4.37114e-08, 0.15593, 20.1137, -0.0240784)
 light_color = Color(0.921569, 0.941176, 0.737255, 1)
 light_energy = 3.0
 light_indirect_energy = 2.0
@@ -420,6 +420,7 @@ spot_angle = 25.0
 libraries = {
 "": SubResource("AnimationLibrary_ikwii")
 }
+autoplay = "Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Lantern"]
 libraries = {
@@ -444,10 +445,5 @@ mesh = SubResource("CapsuleMesh_idehi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_7f3r8")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.4)
-omni_range = 2.0
-omni_attenuation = 0.5
 
 [connection signal="timeout" from="Head/Lantern/RandomTimer" to="." method="_on_random_timer_timeout"]
