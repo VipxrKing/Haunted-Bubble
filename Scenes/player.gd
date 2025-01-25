@@ -3,6 +3,9 @@ class_name Player
 
 @onready var head = $Head
 #Flags3
+
+@onready var ray_cast_3d: RayCast3D = $Head/RayCast3D
+
 var INPUT: bool = true
 
 #Speeds
@@ -21,6 +24,8 @@ var SENS_CONTROLLER: float = 5.0
 
 var controller_input_dir: Vector2 = Vector2.ZERO
 
+var lantern:bool = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -33,6 +38,14 @@ func _input(event) -> void:
 			rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENS))
 			head.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENS))
 			head.rotation.x = clamp(head.rotation.x,deg_to_rad(-89),deg_to_rad(89))
+	
+		if Input.is_action_just_pressed("FLASHLIGHT"):
+			if lantern: $Head/Lantern/AnimationPlayer.play("OFF")
+			else: $Head/Lantern/AnimationPlayer.play("ON")
+			lantern = !lantern
+		
+		if Input.is_action_just_pressed("INTERACT"):
+			ray_cast_3d.get_collider()
 
 func _physics_process(delta) -> void:
 	if INPUT:
