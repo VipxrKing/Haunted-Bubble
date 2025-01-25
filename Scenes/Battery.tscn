@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://sjmcaoqtjtly"]
+
+[ext_resource type="Script" path="res://Scenes/battery.gd" id="1_iklud"]
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="1_x1fmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5rn2"]
+albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4e1f0"]
+material = SubResource("StandardMaterial3D_e5rn2")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebgp1"]
+albedo_color = Color(0.386929, 0.288421, 0.115826, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ser3p"]
+material = SubResource("StandardMaterial3D_ebgp1")
+top_radius = 0.052
+bottom_radius = 0.052
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s3ox"]
+albedo_color = Color(0.537012, 0.537011, 0.537011, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ud57m"]
+material = SubResource("StandardMaterial3D_3s3ox")
+top_radius = 0.047
+bottom_radius = 0.047
+height = 0.21
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0mumr"]
+material = SubResource("StandardMaterial3D_3s3ox")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.23
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a4g3r"]
+height = 0.232138
+radius = 0.055246
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1au1k"]
+height = 0.4
+radius = 0.15
+
+[node name="Battery" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+linear_damp = 0.1
+script = ExtResource("1_iklud")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_4e1f0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_ser3p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_ud57m")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_0mumr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_a4g3r")
+
+[node name="Interactable" parent="." instance=ExtResource("1_x1fmh")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("CylinderShape3D_1au1k")
+
+[connection signal="Interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]
