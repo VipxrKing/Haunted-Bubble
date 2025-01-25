@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be5p7xwmsmc8h"
-path.s3tc="res://.godot/imported/trn_CandleFlame.png-01ce54f1141558e1f8c280c99ef2cc48.s3tc.ctex"
+uid="uid://cvhpoky4jdwp0"
+path.s3tc="res://.godot/imported/flame_01.png-d5ff55582a0555d1f217ae517ae1b9f6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Fbx/soiTavern_fbx/Candles/trn_CandleFlame.png"
-dest_files=["res://.godot/imported/trn_CandleFlame.png-01ce54f1141558e1f8c280c99ef2cc48.s3tc.ctex"]
+source_file="res://Textures/Particles/flame_01.png"
+dest_files=["res://.godot/imported/flame_01.png-d5ff55582a0555d1f217ae517ae1b9f6.s3tc.ctex"]
 
 [params]
 
