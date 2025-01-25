@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://8qy80gy6vrri"]
+
+[ext_resource type="PackedScene" uid="uid://bip1f0us0ut3q" path="res://Scenes/Player.tscn" id="1_xkdae"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuus3"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="Gradient" id="Gradient_ycw35"]
+colors = PackedColorArray(0.352941, 0.2, 0, 1, 0.0588235, 0, 0.113725, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_du3vf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5jw5c"]
+color_ramp = SubResource("Gradient_ycw35")
+noise = SubResource("FastNoiseLite_du3vf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqlu6"]
+albedo_texture = SubResource("NoiseTexture2D_5jw5c")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sxqmc"]
+material = SubResource("StandardMaterial3D_gqlu6")
+size = Vector2(100, 100)
+
+[node name="World" type="Node3D"]
+
+[node name="Test" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_tuus3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Test"]
+mesh = SubResource("PlaneMesh_sxqmc")
+skeleton = NodePath("../..")
+
+[node name="Player" parent="." instance=ExtResource("1_xkdae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

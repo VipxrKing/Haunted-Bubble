@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://suv2ur61xwjm"]
+
+[ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
+[ext_resource type="PackedScene" uid="uid://8qy80gy6vrri" path="res://Scenes/world.tscn" id="2_epdxc"]
+
+[node name="SceneManager" type="Node3D"]
+script = ExtResource("1_igokh")
+
+[node name="CurrentScene" type="Node3D" parent="."]
+
+[node name="World" parent="CurrentScene" instance=ExtResource("2_epdxc")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
