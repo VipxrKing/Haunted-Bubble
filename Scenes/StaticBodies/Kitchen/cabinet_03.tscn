@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://btqqsvmwei58q"]
+[gd_scene load_steps=20 format=4 uid="uid://btqqsvmwei58q"]
 
 [ext_resource type="Texture2D" uid="uid://coi00xehq78yg" path="res://Fbx/kitchen_fbx/Texture8x8.png" id="1_pl3w5"]
 [ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_3b7w4"]
@@ -74,9 +74,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hp1vm")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l6ir6"]
-points = PackedVector3Array(0.299958, 0.715207, 0.309959, 0.0489919, 0.672972, 0.352072, 0.289445, 0.701129, 0.319295, 0.300017, 0.120885, 0.309959, 0.299958, 0.715207, 0.299963, -0.3, 0.715207, 0.309959, 0.0489919, 0.665467, 0.352072, -0.0490335, 0.672972, 0.352072, 0.289445, 0.134905, 0.319295, 0.300017, 0.120885, 0.299963, -0.3, 0.120885, 0.309959, 0.290855, 0.691821, -0.16628, -0.3, 0.715207, 0.299963, -0.289487, 0.701129, 0.319295, -0.0490335, 0.665467, 0.352072, -0.289487, 0.134905, 0.319295, 0.290855, 0.133043, -0.16628, -0.3, 0.120885, 0.299963, -0.290896, 0.691821, -0.16628, -0.290896, 0.133043, -0.16628)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8u8kq"]
 size = Vector3(0.604553, 0.591064, 0.0905151)
 
@@ -136,8 +133,23 @@ _data = {
 "open": SubResource("Animation_1oyw2")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ywkg"]
+size = Vector3(0.604919, 0.554097, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pu2yn"]
+size = Vector3(0.0319519, 0.519801, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0oqas"]
+size = Vector3(0.0319519, 0.521894, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5imq"]
+size = Vector3(0.604919, 0.521864, 0.04216)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x56om"]
+size = Vector3(0.604919, 0.52278, 0.04216)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0b6qu"]
-size = Vector3(0.609497, 0.830566, 0.680542)
+size = Vector3(0.609497, 0.0518187, 0.680542)
 
 [node name="Cabinet_03" type="StaticBody3D"]
 
@@ -151,13 +163,8 @@ skeleton = NodePath("")
 script = ExtResource("2_q5xqr")
 
 [node name="Cabinet5-D1" type="MeshInstance3D" parent="Mesh/Cabinet5/Door01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.9407e-08)
 mesh = SubResource("ArrayMesh_ia7t4")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.9407e-08)
-shape = SubResource("ConvexPolygonShape3D_l6ir6")
 
 [node name="Interactable" parent="Mesh/Cabinet5/Door01" instance=ExtResource("2_3b7w4")]
 
@@ -170,8 +177,30 @@ libraries = {
 "": SubResource("AnimationLibrary_4omqo")
 }
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.408861, 0.0594042)
+shape = SubResource("BoxShape3D_5ywkg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.287308, 0.423893, 0.0594042)
+shape = SubResource("BoxShape3D_pu2yn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285548, 0.424814, 0.0594042)
+shape = SubResource("BoxShape3D_0oqas")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.425405, -0.152594)
+shape = SubResource("BoxShape3D_j5imq")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.424492, 0.271383)
+shape = SubResource("BoxShape3D_x56om")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, 0.414616, 0.0401001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, 0.80399, 0.0401001)
 shape = SubResource("BoxShape3D_0b6qu")
+
+[connection signal="Interacted" from="Mesh/Cabinet5/Door01/Interactable" to="Mesh/Cabinet5/Door01" method="_on_interactable_interacted"]
 
 [editable path="Mesh/Cabinet5/Door01/Interactable"]

@@ -1,4 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://c3cler4dmc1ys"]
+[gd_scene load_steps=24 format=4 uid="uid://c3cler4dmc1ys"]
+
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="1_ehw22"]
+[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="1_tr05j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebmyj"]
 resource_name = "Toilet_Round"
@@ -178,11 +181,79 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fh8g6")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcuh2"]
+size = Vector3(0.465881, 0.160248, 0.428833)
+
+[sub_resource type="Animation" id="Animation_fx5c3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_by32o"]
+resource_name = "close"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_143bo"]
+resource_name = "open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqvac"]
+_data = {
+"RESET": SubResource("Animation_fx5c3"),
+"close": SubResource("Animation_by32o"),
+"open": SubResource("Animation_143bo")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4edni"]
 size = Vector3(0.305672, 0.772003, 0.175537)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gl8tb"]
-size = Vector3(0.451721, 0.416534, 0.585327)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhboq"]
+size = Vector3(0.419327, 0.194588, 0.0404968)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_himur"]
+size = Vector3(0.223423, 0.194588, 0.0404968)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jkfni"]
+size = Vector3(0.223423, 0.194588, 0.0404968)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wg3mc"]
+size = Vector3(0.223423, 0.0391883, 0.322685)
 
 [node name="Toilet_03" type="StaticBody3D"]
 
@@ -202,15 +273,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380055, 0.00543404)
 mesh = SubResource("ArrayMesh_4mndk")
 skeleton = NodePath("")
 
-[node name="Toilet_Round_C_Seat_Cover" type="MeshInstance3D" parent="Mesh/Toilet_Round_C/Toilet_Round_C_Seat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00630474, -0.188605)
+[node name="Door01" type="Node3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.387529, -0.18325)
+script = ExtResource("1_tr05j")
+
+[node name="Toilet_Round_C_Seat_Cover" type="MeshInstance3D" parent="Mesh/Door01"]
 mesh = SubResource("ArrayMesh_xf8gx")
 skeleton = NodePath("")
+
+[node name="Interactable" parent="Mesh/Door01" instance=ExtResource("1_ehw22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.196969)
+
+[node name="CollisionShape3D" parent="Mesh/Door01/Interactable" index="0"]
+shape = SubResource("BoxShape3D_lcuh2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Door01"]
+libraries = {
+"": SubResource("AnimationLibrary_xqvac")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00327682, 0.387174, -0.277466)
 shape = SubResource("BoxShape3D_4edni")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0027771, 0.209439, -0.0725708)
-shape = SubResource("BoxShape3D_gl8tb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000343292, 0.295502, 0.140423)
+shape = SubResource("BoxShape3D_jhboq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000343292, 0.295502, -0.115623)
+shape = SubResource("BoxShape3D_jhboq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, -2.27374e-13, 1, -2.27374e-13, -4.37114e-08, -0.138247, 0.295502, 0.0112769)
+shape = SubResource("BoxShape3D_himur")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, -2.27374e-13, 1, -2.27374e-13, -4.37114e-08, 0.137774, 0.295502, 0.0112769)
+shape = SubResource("BoxShape3D_jkfni")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, -2.27374e-13, 1, -2.27374e-13, -4.37114e-08, -0.000810385, 0.21806, 0.0112769)
+shape = SubResource("BoxShape3D_wg3mc")
+
+[connection signal="Interacted" from="Mesh/Door01/Interactable" to="Mesh/Door01" method="_on_interactable_interacted"]
+
+[editable path="Mesh/Door01/Interactable"]

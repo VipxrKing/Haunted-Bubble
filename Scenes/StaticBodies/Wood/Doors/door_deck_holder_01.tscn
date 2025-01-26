@@ -41,28 +41,15 @@ shadow_mesh = SubResource("ArrayMesh_jyaf3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_eckuo"]
 size = Vector3(1.68027, 0.186804, 2.02741)
 
-[sub_resource type="Animation" id="Animation_p33fg"]
-resource_name = "open"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ilv6"]
+size = Vector3(0.847303, 0.563063, 0.703638)
 
 [sub_resource type="Animation" id="Animation_ceitk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("Door01:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +65,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("Door01:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,6 +75,22 @@ tracks/0/keys = {
 "values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_p33fg"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yhjjx"]
 _data = {
 "RESET": SubResource("Animation_ceitk"),
@@ -95,31 +98,32 @@ _data = {
 "open": SubResource("Animation_p33fg")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6ilv6"]
-size = Vector3(0.847303, 0.563063, 0.703638)
-
-[node name="Door_Deck_Holder_01" type="StaticBody3D"]
+[node name="Door_Deck_Holder_01" type="Node3D"]
 script = ExtResource("1_hvcf3")
+door = true
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="Door01" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
 
-[node name="Door_Deck_2" type="MeshInstance3D" parent="Mesh"]
+[node name="Door_Deck_2" type="MeshInstance3D" parent="Door01"]
 mesh = SubResource("ArrayMesh_fcf2i")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0330661, 1.00198)
 shape = SubResource("BoxShape3D_eckuo")
+
+[node name="Interactable" parent="Door01" instance=ExtResource("3_ejr55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00481224, -0.0336859, 1.67894)
+
+[node name="CollisionShape3D" parent="Door01/Interactable" index="0"]
+shape = SubResource("BoxShape3D_6ilv6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_yhjjx")
 }
 
-[node name="Interactable" parent="." instance=ExtResource("3_ejr55")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00481224, -0.0336859, 1.67894)
+[connection signal="Interacted" from="Door01/Interactable" to="." method="_on_interactable_interacted"]
 
-[node name="CollisionShape3D" parent="Interactable" index="0"]
-shape = SubResource("BoxShape3D_6ilv6")
-
-[editable path="Interactable"]
+[editable path="Door01/Interactable"]

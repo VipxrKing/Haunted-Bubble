@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bcxp471x6piew"]
+[gd_scene load_steps=39 format=4 uid="uid://bcxp471x6piew"]
 
 [ext_resource type="Script" path="res://Scenes/key.gd" id="1_loxcb"]
 [ext_resource type="Texture2D" uid="uid://c1axl7frcmv85" path="res://Mesh/Llave/Gema_baseColor.png" id="2_6idyy"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cuqfniok2xyd0" path="res://Mesh/Llave/Dientes_baseColor.png" id="15_baa36"]
 [ext_resource type="Texture2D" uid="uid://lnmub0rao51x" path="res://Mesh/Llave/Dientes_occlusionRoughnessMetallic.png" id="16_2g74c"]
 [ext_resource type="Texture2D" uid="uid://dkdip2kpr4bjr" path="res://Mesh/Llave/Dientes_normal.png" id="17_ha4fb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f6wnf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcgh3"]
 resource_name = "Gema"
@@ -285,17 +287,16 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_juf0d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oqffi"]
-size = Vector3(0.362167, 0.555101, 0.129028)
+size = Vector3(0.260952, 0.478236, 0.107208)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fotis"]
-size = Vector3(0.363477, 0.556098, 0.129248)
+size = Vector3(0.363477, 0.556098, 0.161951)
 
 [node name="Key" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 7
 mass = 5.0
-linear_damp = 1.0
-angular_damp = 1.0
+physics_material_override = SubResource("PhysicsMaterial_f6wnf")
 script = ExtResource("1_loxcb")
 
 [node name="Mesh" type="Node3D" parent="."]
@@ -332,13 +333,13 @@ mesh = SubResource("ArrayMesh_jrnmp")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206681, 0.0247825, -0.000915527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020075, 0.0331174, 0.00141903)
 shape = SubResource("BoxShape3D_oqffi")
 
 [node name="Interactable" parent="." instance=ExtResource("2_svdjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0319561, 0)
 
 [node name="CollisionShape3D" parent="Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0201661, 0.0231109, -0.00261228)
 shape = SubResource("BoxShape3D_fotis")
 
 [connection signal="Interacted" from="Interactable" to="." method="_on_interactable_interacted"]
