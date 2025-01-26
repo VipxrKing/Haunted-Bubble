@@ -1,0 +1,191 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8tr57ts7al71"]
+
+[ext_resource type="Script" path="res://Scenes/custom_button.gd" id="1_1kjoi"]
+[ext_resource type="Texture2D" uid="uid://cik1ebt3sot5m" path="res://Textures/UI/Play copia.png" id="1_8amtq"]
+[ext_resource type="Texture2D" uid="uid://bdujyjxj3htkh" path="res://Textures/UI/Carne.png" id="2_cnulj"]
+[ext_resource type="Texture2D" uid="uid://qu1x67iu7xac" path="res://Textures/UI/BarraBlancaInf.png" id="3_td1wh"]
+[ext_resource type="Texture2D" uid="uid://dd6ujn2okmpxj" path="res://Textures/UI/BarraBlancaSup.png" id="4_6e6as"]
+[ext_resource type="Texture2D" uid="uid://cyc51bhcptdoa" path="res://Textures/UI/Burbuja1.png" id="5_5003g"]
+[ext_resource type="Texture2D" uid="uid://bjd5m2c16xwml" path="res://Textures/UI/Burbuja2.png" id="6_t2vkl"]
+
+[sub_resource type="Animation" id="Animation_h3p22"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sup/Bubble1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, -60), Vector2(100, -7.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(285, 156), Vector2(285, 131)]
+}
+
+[sub_resource type="Animation" id="Animation_d0ovr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sup/Bubble1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, -60)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bubble2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(285, 156)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1qgy"]
+_data = {
+"Idle": SubResource("Animation_h3p22"),
+"RESET": SubResource("Animation_d0ovr")
+}
+
+[sub_resource type="Animation" id="Animation_xxdxx"]
+resource_name = "OPEN"
+
+[sub_resource type="Animation" id="Animation_ixx45"]
+resource_name = "CLOSE"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvqv8"]
+_data = {
+"CLOSE": SubResource("Animation_ixx45"),
+"OPEN": SubResource("Animation_xxdxx")
+}
+
+[node name="CustomButton" type="Button"]
+offset_right = 394.0
+offset_bottom = 284.0
+mouse_filter = 1
+flat = true
+script = ExtResource("1_1kjoi")
+
+[node name="Text" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 116.0
+offset_right = 80.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("1_8amtq")
+
+[node name="Flesh" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 90.0
+offset_right = 523.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("2_cnulj")
+
+[node name="Inf" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 179.0
+offset_right = 547.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("3_td1wh")
+
+[node name="Sup" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 556.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("4_6e6as")
+
+[node name="Bubble1" type="TextureRect" parent="Sup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -60.0
+offset_right = -639.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_5003g")
+
+[node name="Bubble2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 285.0
+offset_top = 156.0
+offset_right = 90.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+texture = ExtResource("6_t2vkl")
+
+[node name="Idler" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f1qgy")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qvqv8")
+}
+playback_default_blend_time = 1.0

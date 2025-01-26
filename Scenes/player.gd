@@ -43,6 +43,7 @@ var keys:int = 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Utils.get_ui().update_keys()
 	StaminaBar = Utils.get_ui().find_child("StaminaBar")
 	StaminaBar2 = Utils.get_ui().find_child("StaminaBar2")
 	LanternBar = Utils.get_ui().find_child("LanternBar")
@@ -96,6 +97,8 @@ func _physics_process(delta) -> void:
 			CURRENT_SPEED = CROUNCHING_SPEED
 			head.position.y = lerp(head.position.y,1.8 - CROUCHING_DEPTH,delta*LERP_SPEED)
 			$FullCollision.disabled = true
+			$StepTimer.wait_time = 1.0
+			$StepAudio.volume_db = -35
 		else:
 			$FullCollision.disabled = false
 			head.position.y = lerp(head.position.y,1.8,delta*LERP_SPEED)
@@ -179,7 +182,6 @@ func death():
 	$Head/Lantern/Idler.stop()
 	$Head/AnimationPlayer.play("Death")
 	
-	
 func death_finish():
 	if lantern: $Head/Lantern/AnimationPlayer.play("TURN_OFF")
 	await get_tree().create_timer(2.5).timeout
@@ -188,6 +190,5 @@ func death_finish():
 func _on_step_timer_timeout() -> void:
 	if !Utils.custom_equal_aprox_vec3(DIRECTION,Vector3.ZERO):
 		$StepAudio.playing = true
-		print(DIRECTION)
 	else:
 		$StepAudio.playing = false
