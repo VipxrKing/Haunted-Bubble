@@ -237,6 +237,7 @@ layer = 3
 script = ExtResource("2_bpo23")
 
 [node name="HUD" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -366,7 +367,7 @@ autowrap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI/HUD/Note"]
 show_behind_parent = true
-custom_minimum_size = Vector2(540, 740)
+custom_minimum_size = Vector2(560, 760)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -379,6 +380,17 @@ offset_right = 250.0
 offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Close" type="Button" parent="UI/HUD/Note"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 482.0
+offset_top = -34.0
+offset_right = 500.0
+offset_bottom = -3.0
+scale = Vector2(2.61713, 1.7685)
+text = "X"
+flat = true
 
 [node name="PauseMenu" type="Control" parent="UI"]
 visible = false
@@ -668,6 +680,7 @@ libraries = {
 
 [node name="SongPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="pressed" from="UI/HUD/Note/Close" to="UI" method="_on_close_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/MainMenu" to="UI" method="_on_main_menu_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Quit" to="UI" method="_on_quit_pressed"]
