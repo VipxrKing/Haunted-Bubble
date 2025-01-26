@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var navigation_agent_3d:NavigationAgent3D = $NavigationAgent3D
 
-@export var WALKING_SPEED:float = 8.0
+@export var WALKING_SPEED:float = 7.0
 @export var ROTATION_SPEED:float = 6.0
 
 const FALLING_SPEED:float = 9.8
@@ -21,13 +21,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y -= FALLING_SPEED
-		velocity = velocity.lerp(direction*WALKING_SPEED,ACCELERATION * delta)
-		move_and_slide()
+	navigation_agent_3d.target_position = playerref.global_position
+	face_to()
+	direction = (navigation_agent_3d.get_next_path_position() - global_position).normalized()
+	velocity = velocity.lerp(direction*WALKING_SPEED,ACCELERATION * delta)
+	move_and_slide()
 	
-		navigation_agent_3d.target_position = playerref.global_position
-		face_to()
-		direction = (navigation_agent_3d.get_next_path_position() - global_position).normalized()
-
 func face_to(to_player:bool = false) -> void:
 	if body_rot_tween:
 		body_rot_tween.kill()

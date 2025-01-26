@@ -79,8 +79,7 @@ collision_layer = 2
 script = ExtResource("1_vhta0")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 3.0
-target_desired_distance = 2.0
+path_postprocessing = 1
 
 [node name="Mesh" type="Node3D" parent="."]
 
