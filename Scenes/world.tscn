@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=4 uid="uid://8qy80gy6vrri"]
+[gd_scene load_steps=174 format=4 uid="uid://8qy80gy6vrri"]
 
 [ext_resource type="Texture2D" uid="uid://c16654eamntiw" path="res://Textures/FloorWood/textures/wood_peeling_paint_weathered_diff_1k.png" id="1_1rv1c"]
 [ext_resource type="PackedScene" uid="uid://butpe0nv3ifem" path="res://Scenes/Player.tscn" id="1_xkdae"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://5fyji6o4gd15" path="res://Textures/Walls Wood/textures/wood_cabinet_worn_long_rough_1k.png" id="13_kvyip"]
 [ext_resource type="PackedScene" uid="uid://bw8xkw5rgtnmw" path="res://Scenes/StaticBodies/Restroom/sink_01.tscn" id="15_m0keu"]
 [ext_resource type="PackedScene" uid="uid://b5idxp1jm685m" path="res://Scenes/Chandelier.tscn" id="15_q1h82"]
-[ext_resource type="PackedScene" uid="uid://b11whx50eb76l" path="res://Scenes/StaticBodies/Wood/Doors/door_normal_01.tscn" id="16_hvump"]
 [ext_resource type="PackedScene" uid="uid://d1xdtbm02a7na" path="res://Scenes/StaticBodies/Wood/handrail_01.tscn" id="17_kl2y6"]
 [ext_resource type="PackedScene" uid="uid://dpg5d0tps1c81" path="res://Scenes/StaticBodies/Restroom/toilet_01.tscn" id="18_w81ln"]
 [ext_resource type="PackedScene" uid="uid://bu732ul8re51j" path="res://Scenes/StaticBodies/Wood/stairs_03.tscn" id="19_qo8to"]
@@ -3917,20 +3916,8 @@ omni_attenuation = 0.75
 
 [node name="Doors" type="Node3D" parent="."]
 
-[node name="Door_Normal_Holder_01" parent="Doors" instance=ExtResource("16_hvump")]
-transform = Transform3D(-1.8, 0, 2.71792e-07, 0, 1.8, 0, -2.71792e-07, 0, -1.8, -14.5981, 7.70418, -3.8462)
-
-[node name="Door_Normal_Holder_02" parent="Doors" instance=ExtResource("16_hvump")]
-transform = Transform3D(2.68221e-07, 0, 1.8, 0, 1.8, 0, -1.8, 0, 2.68221e-07, -9.62342, 7.71437, -16.0199)
-
-[node name="Door_Normal_Holder_04" parent="Doors" instance=ExtResource("16_hvump")]
-transform = Transform3D(2.68221e-07, 0, 1.8, 0, 1.8, 0, -1.8, 0, 2.68221e-07, -9.51009, -0.0222517, -16.0199)
-
-[node name="Door_Normal_Holder_03" parent="Doors" instance=ExtResource("16_hvump")]
-transform = Transform3D(-1.1086e-07, 0, -1.8, 0, 1.8, 0, 1.8, 0, -1.1086e-07, -12.1735, 7.71437, 15.9488)
-
 [node name="Door_Double_Tall_01" parent="Doors" instance=ExtResource("60_yc122")]
-transform = Transform3D(-3.96511e-08, 0, -1, 0, 1.22743, 0, 0.907113, 0, -4.37114e-08, 19.2387, 0, -3.19314e-08)
+transform = Transform3D(-3.96511e-08, 0, -1, 0, 1.22743, 0, 0.907113, 0, -4.37114e-08, 19.1523, 0, -3.57091e-08)
 
 [node name="Notes" type="Node3D" parent="."]
 
@@ -4050,31 +4037,34 @@ shape = SubResource("ConcavePolygonShape3D_mfjfy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56895, 1.2, -2.92785)
 
 [node name="Battery2" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0677, 1.37024, 36.1352)
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 16.0677, 1.37024, 36.1352)
 
 [node name="Battery3" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(-3.47199e-08, 0.794298, -0.607528, -1, -4.37114e-08, 0, -2.65559e-08, 0.607528, 0.794298, -23.3807, 1.11745, -3.07168)
+transform = Transform3D(-0.586827, 0.794298, 0.15724, 0.258819, -2.98023e-08, 0.965926, 0.767233, 0.607528, -0.205579, -23.3807, 1.11745, -3.07168)
 
 [node name="Battery4" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(-4.05113e-08, 0.926791, 0.375577, -1, -4.37114e-08, 0, 1.6417e-08, -0.375577, 0.926791, -18.2807, 0.908522, -22.5717)
+transform = Transform3D(0.307131, 0.926791, 0.216168, -0.575562, -4.47035e-08, 0.817758, 0.757891, -0.375577, 0.533426, -18.2807, 0.908522, -22.5717)
 
 [node name="Battery5" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.32507, -5.64895, -58.7137)
+transform = Transform3D(-0.943922, 0, -0.330168, 0, 1, 0, 0.330168, 0, -0.943922, 9.32507, -5.64895, -58.7137)
 
 [node name="Battery6" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(-0.0336539, 0.993037, 0.112891, 0.999426, 0.0338704, 1.44085e-09, -0.00382366, 0.112826, -0.993607, -2.71046, -6.15828, -96.2482)
+transform = Transform3D(-0.10901, 0.993037, 0.0446511, 0.62725, 0.0338704, 0.778081, 0.771151, 0.112826, -0.626574, -2.71046, -6.15828, -96.2482)
 
 [node name="Battery7" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2775, -5.5965, -56.1244)
+transform = Transform3D(-0.859147, 0, 0.511728, 0, 1, 0, -0.511728, 0, -0.859147, 25.2775, -5.5965, -56.1244)
 
 [node name="Battery8" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(-3.01718e-08, -0.690251, 0.72357, 1, -4.37114e-08, 0, 3.16282e-08, 0.72357, 0.690251, 25.4775, -5.67743, -55.1244)
+transform = Transform3D(-0.671604, -0.690251, -0.269262, -0.372129, -5.96046e-08, 0.928181, -0.640678, 0.72357, -0.256863, 25.4775, -5.67743, -55.1244)
 
 [node name="Battery9" parent="Batterys" instance=ExtResource("68_cr78e")]
-transform = Transform3D(-2.98055e-08, -0.681871, -0.731473, 1, -4.37114e-08, 2.45226e-15, -3.19737e-08, -0.731473, 0.681871, 38.3489, -6.19022, -66.8329)
+transform = Transform3D(0.708619, -0.681871, -0.181415, 0.248014, 2.98023e-08, 0.968757, -0.660567, -0.731473, 0.169113, 38.3489, -6.19022, -66.8329)
 
 [node name="Battery10" parent="Batterys" instance=ExtResource("68_cr78e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.2139, -5.64832, -109.555)
+
+[node name="Battery11" parent="Batterys" instance=ExtResource("68_cr78e")]
+transform = Transform3D(-0.42903, 0, 0.90329, 0, 1, 0, -0.90329, 0, -0.42903, -12.2505, 12.7103, 29.2046)
 
 [connection signal="Interacted" from="NavigationRegion3D/Casa/Gabinetes/Cabinet_14/Mesh/Cabinet4/Door01/Interactable" to="NavigationRegion3D/Casa/Gabinetes/Cabinet_14/Mesh/Cabinet4/Door01" method="_on_interactable_interacted"]
 [connection signal="Interacted" from="NavigationRegion3D/Casa/Gabinetes/Cabinet_14/Mesh/Cabinet4/Door02/Interactable" to="NavigationRegion3D/Casa/Gabinetes/Cabinet_14/Mesh/Cabinet4/Door02" method="_on_interactable_interacted"]
