@@ -1,10 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://suv2ur61xwjm"]
+[gd_scene load_steps=30 format=3 uid="uid://suv2ur61xwjm"]
 
 [ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
 [ext_resource type="PackedScene" uid="uid://dcebu7qbmi4e1" path="res://Scenes/main_menu.tscn" id="2_0tl4a"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="2_bpo23"]
 [ext_resource type="Texture2D" uid="uid://bbc6ayqfyot" path="res://Textures/key.png" id="3_ee8ul"]
-[ext_resource type="AudioStream" uid="uid://crbnj2m2ueeyy" path="res://Audio/Bubbly Follows.wav" id="5_sdmat"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m21a5"]
 font_size = 64
@@ -329,7 +328,7 @@ offset_top = -127.0
 offset_right = 74.0
 offset_bottom = -39.0
 grow_vertical = 0
-text = "0"
+text = "0/5"
 label_settings = SubResource("LabelSettings_c3afc")
 vertical_alignment = 1
 
@@ -338,10 +337,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 149.0
-offset_top = -145.0
-offset_right = 274.0
-offset_bottom = -92.0
+offset_left = 177.0
+offset_top = -125.0
+offset_right = 266.0
+offset_bottom = -87.0
 grow_vertical = 0
 rotation = 1.61044
 texture = ExtResource("3_ee8ul")
@@ -678,11 +677,6 @@ texture = SubResource("NoiseTexture2D_2bxjn")
 libraries = {
 "": SubResource("AnimationLibrary_s5hw2")
 }
-
-[node name="SongPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_sdmat")
-volume_db = -30.0
-bus = &"Music"
 
 [connection signal="pressed" from="UI/HUD/Note/Close" to="UI" method="_on_close_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]

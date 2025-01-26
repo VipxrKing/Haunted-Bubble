@@ -59,7 +59,7 @@ func death_finish():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func update_keys():
-	$HUD/Keys.text = str(Utils.get_player().keys)
+	$HUD/Keys.text = str(Utils.get_player().keys) + "/5"
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

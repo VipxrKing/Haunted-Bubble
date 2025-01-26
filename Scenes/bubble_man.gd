@@ -5,8 +5,9 @@ extends CharacterBody3D
 @export var WALKING_SPEED:float = 4.0
 @export var RUN_SPEED:float = 7.0
 
-var SPEED:float = 4.0
+var mission_complete:bool = false
 
+var SPEED:float = 4.0
 
 const FALLING_SPEED:float = 9.8
 var ACCELERATION:float = 10.0
@@ -24,7 +25,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y -= FALLING_SPEED
-	navigation_agent_3d.target_position = playerref.global_position
+	if !mission_complete: navigation_agent_3d.target_position = playerref.global_position
 	face_to()
 	direction = (navigation_agent_3d.get_next_path_position() - global_position).normalized()
 	velocity = velocity.lerp(direction*SPEED,ACCELERATION * delta)
@@ -51,7 +52,16 @@ func face_to(to_player:bool = false) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
+		$SongPlayer.volume_db = -80
+		mission_complete = true
+		$"Mesh/AnimationPlayer".play("WALK")
+		navigation_agent_3d.target_position = playerref.find_child("Marker3D").global_position
+		$WalkTimer.stop()
+		$RunTimer.stop()
+		SPEED = WALKING_SPEED
 		body.death()
+		await get_tree().create_timer(1.0).timeout
+		if $"Mesh/AnimationPlayer".current_animation != "IDLE": _on_navigation_agent_3d_navigation_finished()
 
 func _on_random_timer_timeout() -> void:
 	$RandomTimer.wait_time = randf_range(2,6)
@@ -62,10 +72,18 @@ func _on_bubble_audio_finished() -> void:
 
 func _on_run_timer_timeout() -> void:
 	$"Mesh/AnimationPlayer".play("WALK")
+	var tween = create_tween()
+	tween.tween_property($SongPlayer,"volume_db",-80,1.0)
 	SPEED = WALKING_SPEED
 	$WalkTimer.start()
 
 func _on_walk_timer_timeout() -> void:
 	$"Mesh/AnimationPlayer".play("RUN")
+	var tween = create_tween()
+	tween.tween_property($SongPlayer,"volume_db",-25,1.0)
 	SPEED = RUN_SPEED
 	$RunTimer.start()
+
+
+func _on_navigation_agent_3d_navigation_finished() -> void:
+	if mission_complete: $"Mesh/AnimationPlayer".play("IDLE")
