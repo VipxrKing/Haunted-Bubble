@@ -38,7 +38,6 @@ shadow_mesh = SubResource("ArrayMesh_4hpyj")
 size = Vector3(2.0881, 0.542979, 1.46323)
 
 [node name="Props_Bed_1" type="StaticBody3D"]
-collision_layer = 2
 collision_mask = 3
 
 [node name="Props_Bed_1" type="MeshInstance3D" parent="."]
