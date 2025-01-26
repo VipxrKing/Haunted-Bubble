@@ -39,7 +39,7 @@ var StaminaBar
 var StaminaBar2
 var LanternBar
 
-var keys:int = 0
+var keys:int = 5
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -132,7 +132,7 @@ func _physics_process(delta) -> void:
 		# Handle Jump.
 		#if Input.is_action_pressed("JUMP") and is_on_floor():
 			#velocity.y = JUMP_VELOCITY
-
+		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var input_dir = Input.get_vector("LEFT", "RIGHT", "FORWARD", "BACKWARD")
