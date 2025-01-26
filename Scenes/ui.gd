@@ -50,7 +50,7 @@ func unpause():
 
 func death():
 	in_game = false
-	$HUD.visible = true
+	$HUD.visible = false
 	$PauseMenu.visible = false
 	
 func death_finish():
@@ -72,3 +72,8 @@ func _on_main_menu_pressed() -> void:
 	$DeathScreen.visible = false
 	$DeathScreen/ColorRect/AnimationPlayer.play("OUT")
 	unpause()
+
+func _on_close_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$HUD/Note.visible = false
+	Utils.get_player().INPUT = true

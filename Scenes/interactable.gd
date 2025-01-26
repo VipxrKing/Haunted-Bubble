@@ -11,6 +11,5 @@ func interact():
 		Interacted.emit()
 	
 
-
 func _on_timer_timeout() -> void:
 	pass # Replace with function body.

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://33keotxx7wox"
+path.s3tc="res://.godot/imported/Llave_14.png-1f6c341d6c5739a11ae218a7a6e7ae2a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "464db26e455e366d0d04b5afc3a1584f"
+}
+
+[deps]
+
+source_file="res://Mesh/Llave/Llave_14.png"
+dest_files=["res://.godot/imported/Llave_14.png-1f6c341d6c5739a11ae218a7a6e7ae2a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Mesh/Llave/Llave_14.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
