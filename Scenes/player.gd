@@ -39,7 +39,7 @@ var StaminaBar
 var StaminaBar2
 var LanternBar
 
-var keys:int = 5
+var keys:int = 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

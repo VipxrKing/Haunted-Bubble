@@ -12,3 +12,4 @@ func _on_pressed() -> void:
 	$AnimationPlayer.play("CLOSE")
 	await get_tree().create_timer(1.2).timeout
 	custom_pressed.emit()
+	$AnimationPlayer.play("OPEN")
