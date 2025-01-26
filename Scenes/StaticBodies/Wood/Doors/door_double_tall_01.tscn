@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://bryreaaafrgkt"]
 
-[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="1_7j6af"]
+[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/final_door.gd" id="1_044sm"]
 [ext_resource type="Material" uid="uid://cr35py5yx8oiv" path="res://Fbx/HouseAndProps_AssetPack_Godot/LoafbrrAssets/HouseAndPropsPack/Material/Doors.material" id="1_gedxb"]
-[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_idh4w"]
+[ext_resource type="PackedScene" uid="uid://c4f0dbosx8mb1" path="res://Scenes/player_detector.tscn" id="3_xtqng"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8oquw"]
 _surfaces = [{
@@ -41,9 +41,6 @@ shadow_mesh = SubResource("ArrayMesh_8oquw")
 [sub_resource type="BoxShape3D" id="BoxShape3D_1rfsd"]
 size = Vector3(1.36672, 3.24252, 0.364455)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kpp2x"]
-size = Vector3(1.25647, 0.525054, 0.7748)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_pp8px"]
 _surfaces = [{
 "aabb": AABB(-0.0327197, 0, -0.0790545, 1.34244, 3.25272, 0.30023),
@@ -80,6 +77,9 @@ shadow_mesh = SubResource("ArrayMesh_pp8px")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_srb0g"]
 size = Vector3(1.35182, 3.24252, 0.364455)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33bvh"]
+size = Vector3(2.83356, 2.70801, 1.38867)
 
 [sub_resource type="Animation" id="Animation_rgjjb"]
 length = 0.001
@@ -174,8 +174,7 @@ _data = {
 }
 
 [node name="Door_Double_Tall_01" type="Node3D"]
-script = ExtResource("1_7j6af")
-door = true
+script = ExtResource("1_044sm")
 
 [node name="Door01" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30984, 0, 0)
@@ -190,12 +189,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646902, 1.62166, -0.2142)
 shape = SubResource("BoxShape3D_1rfsd")
 
-[node name="Interactable" parent="Door01" instance=ExtResource("2_idh4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.703447, 1.57881, -0.218534)
-
-[node name="CollisionShape3D" parent="Door01/Interactable" index="0"]
-shape = SubResource("BoxShape3D_kpp2x")
-
 [node name="Door02" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31534, 0, 0)
 metadata/_edit_group_ = true
@@ -209,19 +202,18 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633795, 1.62166, -0.2142)
 shape = SubResource("BoxShape3D_srb0g")
 
-[node name="Interactable" parent="Door02" instance=ExtResource("2_idh4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695874, 1.58011, -0.21891)
+[node name="PlayerDetector" parent="." instance=ExtResource("3_xtqng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648815, 0, 0.67499)
 
-[node name="CollisionShape3D" parent="Door02/Interactable" index="0"]
-shape = SubResource("BoxShape3D_kpp2x")
+[node name="CollisionShape3D" parent="PlayerDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64571, 1.35098, -0.194336)
+shape = SubResource("BoxShape3D_33bvh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u21ng")
 }
 
-[connection signal="Interacted" from="Door01/Interactable" to="." method="_on_interactable_interacted"]
-[connection signal="Interacted" from="Door02/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="player_entered" from="PlayerDetector" to="." method="_on_player_detector_player_entered"]
 
-[editable path="Door01/Interactable"]
-[editable path="Door02/Interactable"]
+[editable path="PlayerDetector"]
