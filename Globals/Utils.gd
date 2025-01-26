@@ -16,7 +16,7 @@ func get_navigation_map():
 	return get_current_scene().find_child("NavigationMap")
 
 func custom_equal_aprox_vec3(val1:Vector3,val2:Vector3) -> bool:
-	if (abs(val1.x - val2.x) < 0.1) and (abs(val1.y - val2.y) < 0.1) and (abs(val1.z - val2.z) < 0.1):
+	if (abs(abs(val1.x - val2.x)) < 0.1) and (abs(abs(val1.y - val2.y)) < 0.1) and (abs(abs(val1.z - val2.z)) < 0.1):
 		return true
 	else:
 		return false

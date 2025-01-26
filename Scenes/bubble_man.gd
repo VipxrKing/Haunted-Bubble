@@ -49,3 +49,10 @@ func face_to(to_player:bool = false) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		body.death()
+
+func _on_random_timer_timeout() -> void:
+	$RandomTimer.wait_time = randf_range(2,6)
+	$BubbleAudio.playing = true
+	
+func _on_bubble_audio_finished() -> void:
+	$RandomTimer.start()
