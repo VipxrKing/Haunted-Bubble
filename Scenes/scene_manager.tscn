@@ -1,9 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://suv2ur61xwjm"]
+[gd_scene load_steps=36 format=3 uid="uid://suv2ur61xwjm"]
 
 [ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
 [ext_resource type="PackedScene" uid="uid://dcebu7qbmi4e1" path="res://Scenes/main_menu.tscn" id="2_0tl4a"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="2_bpo23"]
 [ext_resource type="Texture2D" uid="uid://bbc6ayqfyot" path="res://Textures/key.png" id="3_ee8ul"]
+[ext_resource type="PackedScene" uid="uid://b8tr57ts7al71" path="res://Scenes/custom_button.tscn" id="4_qdxsa"]
+[ext_resource type="Texture2D" uid="uid://4q5ura2ovct1" path="res://Textures/UI/Resume.png" id="5_3052b"]
+[ext_resource type="Texture2D" uid="uid://bara0baq5rtmf" path="res://Textures/UI/Main menu.png" id="6_jhlme"]
+[ext_resource type="Texture2D" uid="uid://8qnfh12ase7u" path="res://Textures/UI/Quit Game.png" id="7_j0mvh"]
+[ext_resource type="Texture2D" uid="uid://0bo3cr8l5va2" path="res://Textures/UI/keyboard_arrows.png" id="8_tob6o"]
+[ext_resource type="Texture2D" uid="uid://dbjl3uw7ew3h1" path="res://Textures/UI/keyboard_ctrl.png" id="9_78ha4"]
+[ext_resource type="Texture2D" uid="uid://dcwh82syqha6y" path="res://Textures/UI/keyboard_escape.png" id="10_oytu7"]
+[ext_resource type="Texture2D" uid="uid://bnaisnpmd26n6" path="res://Textures/UI/keyboard_shift.png" id="11_j62ar"]
+[ext_resource type="Texture2D" uid="uid://duto0gio2smyo" path="res://Textures/UI/mouse_right.png" id="12_uuo6u"]
+[ext_resource type="Texture2D" uid="uid://cb1sfpgp0rtcy" path="res://Textures/UI/mouse_left.png" id="13_63gax"]
+[ext_resource type="Texture2D" uid="uid://xx6t3e3wrjax" path="res://Textures/VanditGames.png" id="14_qrk8c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m21a5"]
 font_size = 64
@@ -73,20 +84,10 @@ _data = {
 "RESET": SubResource("Animation_yjpko")
 }
 
-[sub_resource type="Gradient" id="Gradient_7ri8r"]
-colors = PackedColorArray(0.344043, 0.543977, 0.992554, 1, 0, 0, 0, 0)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tv1ig"]
-noise_type = 2
-frequency = 0.013
-fractal_type = 0
-cellular_distance_function = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6nd0s"]
-width = 800
-height = 100
-color_ramp = SubResource("Gradient_7ri8r")
-noise = SubResource("FastNoiseLite_tv1ig")
+[sub_resource type="LabelSettings" id="LabelSettings_vj5bi"]
+font_size = 48
+outline_size = 32
+outline_color = Color(0, 0, 0.117647, 1)
 
 [sub_resource type="Animation" id="Animation_4ig8p"]
 resource_name = "IN"
@@ -140,35 +141,20 @@ _data = {
 "RESET": SubResource("Animation_t8wby")
 }
 
-[sub_resource type="Gradient" id="Gradient_2j1as"]
-colors = PackedColorArray(0.99, 0.3465, 0.357225, 1, 0, 0, 0, 0)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7hlof"]
-width = 800
-height = 100
-color_ramp = SubResource("Gradient_2j1as")
-noise = SubResource("FastNoiseLite_tv1ig")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6ftu8"]
-width = 800
-height = 100
-color_ramp = SubResource("Gradient_2j1as")
-noise = SubResource("FastNoiseLite_tv1ig")
-
-[sub_resource type="LabelSettings" id="LabelSettings_vhshx"]
+[sub_resource type="LabelSettings" id="LabelSettings_3fn73"]
 font_size = 128
 outline_size = 32
-outline_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0.231373, 1)
 
-[sub_resource type="Gradient" id="Gradient_u6vc6"]
+[sub_resource type="Gradient" id="Gradient_5rf8r"]
 colors = PackedColorArray(0.187176, 0.187176, 0.187176, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0hir"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rhl82"]
 frequency = 0.001
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2bxjn"]
-color_ramp = SubResource("Gradient_u6vc6")
-noise = SubResource("FastNoiseLite_c0hir")
+color_ramp = SubResource("Gradient_5rf8r")
+noise = SubResource("FastNoiseLite_rhl82")
 
 [sub_resource type="Animation" id="Animation_iu3j6"]
 resource_name = "FadeBlack"
@@ -422,116 +408,165 @@ libraries = {
 }
 playback_default_blend_time = 1.0
 
-[node name="Resume" type="Button" parent="UI/PauseMenu"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -199.0
-offset_right = 400.0
-offset_bottom = -99.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Resume" parent="UI/PauseMenu" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 133.0
+offset_right = 516.0
+offset_bottom = 417.0
 
-[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/Resume"]
+[node name="Text" parent="UI/PauseMenu/Resume/Control" index="0"]
+offset_left = 62.0
+offset_right = 306.0
+texture = ExtResource("5_3052b")
+
+[node name="MainMenu" parent="UI/PauseMenu" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 403.0
+offset_right = 692.0
+offset_bottom = 687.0
+
+[node name="Text" parent="UI/PauseMenu/MainMenu/Control" index="0"]
+offset_left = 19.0
+offset_right = 473.0
+texture = ExtResource("6_jhlme")
+
+[node name="Quit" parent="UI/PauseMenu" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 676.0
+offset_right = 893.0
+offset_bottom = 960.0
+
+[node name="Text" parent="UI/PauseMenu/Quit/Control" index="0"]
+offset_left = 23.0
+offset_right = 473.0
+texture = ExtResource("7_j0mvh")
+
+[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 122.0
+offset_right = 1234.0
+offset_bottom = 250.0
+texture = ExtResource("8_tob6o")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 258.0
+offset_right = 1234.0
+offset_bottom = 386.0
+texture = ExtResource("9_78ha4")
+
+[node name="TextureRect3" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 398.0
+offset_right = 1234.0
+offset_bottom = 526.0
+texture = ExtResource("10_oytu7")
+
+[node name="TextureRect4" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 528.0
+offset_right = 1234.0
+offset_bottom = 656.0
+texture = ExtResource("11_j62ar")
+
+[node name="TextureRect5" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 647.0
+offset_right = 1234.0
+offset_bottom = 775.0
+texture = ExtResource("12_uuo6u")
+
+[node name="TextureRect6" type="TextureRect" parent="UI/PauseMenu"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 801.0
+offset_right = 1234.0
+offset_bottom = 929.0
+texture = ExtResource("13_63gax")
+
+[node name="Label" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1256.0
+offset_top = 157.0
+offset_right = 1506.0
+offset_bottom = 224.0
+text = "Movement"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="Label2" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1265.0
+offset_top = 289.0
+offset_right = 1515.0
+offset_bottom = 356.0
+text = "Crouch"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="Label3" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1262.0
+offset_top = 422.0
+offset_right = 1512.0
+offset_bottom = 489.0
+text = "Pause"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="Label4" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1265.0
+offset_top = 554.0
+offset_right = 1515.0
+offset_bottom = 621.0
+text = "Run"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="Label5" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1265.0
+offset_top = 684.0
+offset_right = 1757.0
+offset_bottom = 751.0
+text = "Turn on/off flashlight"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="Label6" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 1267.0
+offset_top = 821.0
+offset_right = 1759.0
+offset_bottom = 888.0
+text = "Interact"
+label_settings = SubResource("LabelSettings_vj5bi")
+
+[node name="TextureRect7" type="TextureRect" parent="UI/PauseMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1776.0
+offset_top = 935.0
+offset_right = 125.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.53148, 0.53148)
 mouse_filter = 2
-texture = SubResource("NoiseTexture2D_6nd0s")
-
-[node name="Label" type="Label" parent="UI/PauseMenu/Resume"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Resume"
-label_settings = SubResource("LabelSettings_c3afc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MainMenu" type="Button" parent="UI/PauseMenu"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -67.0
-offset_right = 400.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/MainMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("NoiseTexture2D_6nd0s")
-
-[node name="Label" type="Label" parent="UI/PauseMenu/MainMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main Menu"
-label_settings = SubResource("LabelSettings_c3afc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" type="Button" parent="UI/PauseMenu"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = 64.0
-offset_right = 400.0
-offset_bottom = 164.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/PauseMenu/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("NoiseTexture2D_6nd0s")
-
-[node name="Label" type="Label" parent="UI/PauseMenu/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit Game :C"
-label_settings = SubResource("LabelSettings_c3afc")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("14_qrk8c")
+expand_mode = 1
 
 [node name="DeathScreen" type="Control" parent="UI"]
 visible = false
@@ -563,92 +598,44 @@ libraries = {
 }
 playback_default_blend_time = 1.0
 
-[node name="MainMenu" type="Button" parent="UI/DeathScreen"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -27.0
-offset_right = 400.0
-offset_bottom = 73.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen/MainMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("NoiseTexture2D_7hlof")
-
-[node name="Label" type="Label" parent="UI/DeathScreen/MainMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main Menu"
-label_settings = SubResource("LabelSettings_c3afc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" type="Button" parent="UI/DeathScreen"]
-custom_minimum_size = Vector2(800, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = 104.0
-offset_right = 400.0
-offset_bottom = 204.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="UI/DeathScreen/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("NoiseTexture2D_6ftu8")
-
-[node name="Label" type="Label" parent="UI/DeathScreen/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit Game :C"
-label_settings = SubResource("LabelSettings_c3afc")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Label" type="Label" parent="UI/DeathScreen"]
+modulate = Color(1, 0.44, 0.44, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -710.0
+offset_left = -680.0
 offset_top = 170.0
-offset_right = 710.0
+offset_right = 755.0
 offset_bottom = 345.0
 grow_horizontal = 2
-text = "They're Just Bubbless..."
-label_settings = SubResource("LabelSettings_vhshx")
+text = "They're just bubbles..."
+label_settings = SubResource("LabelSettings_3fn73")
+autowrap_mode = 2
+
+[node name="MainMenu" parent="UI/DeathScreen" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 647.0
+offset_top = 396.0
+offset_right = 1041.0
+offset_bottom = 680.0
+
+[node name="Text" parent="UI/DeathScreen/MainMenu/Control" index="0"]
+offset_left = 19.0
+offset_right = 473.0
+texture = ExtResource("6_jhlme")
+
+[node name="Quit" parent="UI/DeathScreen" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 669.0
+offset_right = 1242.0
+offset_bottom = 953.0
+
+[node name="Text" parent="UI/DeathScreen/Quit/Control" index="0"]
+offset_left = 23.0
+offset_right = 473.0
+texture = ExtResource("7_j0mvh")
 
 [node name="CurrentOverlay" type="CanvasLayer" parent="."]
 layer = 2
@@ -679,8 +666,14 @@ libraries = {
 }
 
 [connection signal="pressed" from="UI/HUD/Note/Close" to="UI" method="_on_close_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/MainMenu" to="UI" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/Quit" to="UI" method="_on_quit_pressed"]
-[connection signal="pressed" from="UI/DeathScreen/MainMenu" to="UI" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="UI/DeathScreen/Quit" to="UI" method="_on_quit_pressed"]
+[connection signal="custom_pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]
+[connection signal="custom_pressed" from="UI/PauseMenu/MainMenu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="custom_pressed" from="UI/PauseMenu/Quit" to="UI" method="_on_quit_pressed"]
+[connection signal="custom_pressed" from="UI/DeathScreen/MainMenu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="custom_pressed" from="UI/DeathScreen/Quit" to="UI" method="_on_quit_pressed"]
+
+[editable path="UI/PauseMenu/Resume"]
+[editable path="UI/PauseMenu/MainMenu"]
+[editable path="UI/PauseMenu/Quit"]
+[editable path="UI/DeathScreen/MainMenu"]
+[editable path="UI/DeathScreen/Quit"]

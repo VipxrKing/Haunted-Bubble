@@ -52,7 +52,7 @@ func face_to(to_player:bool = false) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		$SongPlayer.volume_db = -80
+		$SongPlayer.playing = false
 		mission_complete = true
 		$"Mesh/AnimationPlayer".play("WALK")
 		navigation_agent_3d.target_position = playerref.find_child("Marker3D").global_position
