@@ -6,4 +6,5 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_play_pressed() -> void:
+	Utils.get_scene_manager().find_child("Intro").play()
 	Utils.get_scene_manager().transition_to_scene(starting_map)

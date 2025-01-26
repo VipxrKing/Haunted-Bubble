@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://suv2ur61xwjm"]
+[gd_scene load_steps=40 format=3 uid="uid://suv2ur61xwjm"]
 
 [ext_resource type="Script" path="res://Scenes/scene_manager.gd" id="1_igokh"]
 [ext_resource type="PackedScene" uid="uid://dcebu7qbmi4e1" path="res://Scenes/main_menu.tscn" id="2_0tl4a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://duto0gio2smyo" path="res://Textures/UI/mouse_right.png" id="12_uuo6u"]
 [ext_resource type="Texture2D" uid="uid://cb1sfpgp0rtcy" path="res://Textures/UI/mouse_left.png" id="13_63gax"]
 [ext_resource type="Texture2D" uid="uid://xx6t3e3wrjax" path="res://Textures/VanditGames.png" id="14_qrk8c"]
+[ext_resource type="AudioStream" uid="uid://dq7knq67slury" path="res://Audio/Desaparición del Asesino.wav" id="16_px081"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m21a5"]
 font_size = 64
@@ -145,6 +146,16 @@ _data = {
 font_size = 128
 outline_size = 32
 outline_color = Color(0, 0, 0.231373, 1)
+
+[sub_resource type="Gradient" id="Gradient_oiq74"]
+colors = PackedColorArray(0.19, 0.19, 0.19, 0, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c0hir"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rmw3j"]
+color_ramp = SubResource("Gradient_oiq74")
+noise = SubResource("FastNoiseLite_c0hir")
 
 [sub_resource type="Gradient" id="Gradient_5rf8r"]
 colors = PackedColorArray(0.187176, 0.187176, 0.187176, 1, 0, 0, 0, 1)
@@ -637,6 +648,69 @@ offset_left = 23.0
 offset_right = 473.0
 texture = ExtResource("7_j0mvh")
 
+[node name="WinScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -217.0
+offset_right = 201.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_rmw3j")
+
+[node name="Label" type="Label" parent="UI/WinScreen"]
+modulate = Color(1, 0.44, 0.44, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -862.0
+offset_top = 1.0
+offset_right = 899.0
+offset_bottom = 710.0
+grow_horizontal = 2
+text = "You've escaped the house, you broke the plan, and now you're free from Bubble Man!"
+label_settings = SubResource("LabelSettings_3fn73")
+autowrap_mode = 2
+
+[node name="MainMenu" parent="UI/WinScreen" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 738.0
+offset_right = 857.0
+offset_bottom = 1022.0
+
+[node name="Text" parent="UI/WinScreen/MainMenu/Control" index="0"]
+offset_left = 19.0
+offset_right = 473.0
+texture = ExtResource("6_jhlme")
+
+[node name="Quit" parent="UI/WinScreen" instance=ExtResource("4_qdxsa")]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 742.0
+offset_right = 1370.0
+offset_bottom = 1026.0
+
+[node name="Text" parent="UI/WinScreen/Quit/Control" index="0"]
+offset_left = 23.0
+offset_right = 473.0
+texture = ExtResource("7_j0mvh")
+
 [node name="CurrentOverlay" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -665,15 +739,23 @@ libraries = {
 "": SubResource("AnimationLibrary_s5hw2")
 }
 
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_px081")
+volume_db = -20.0
+
 [connection signal="pressed" from="UI/HUD/Note/Close" to="UI" method="_on_close_pressed"]
 [connection signal="custom_pressed" from="UI/PauseMenu/Resume" to="UI" method="_on_resume_pressed"]
 [connection signal="custom_pressed" from="UI/PauseMenu/MainMenu" to="UI" method="_on_main_menu_pressed"]
 [connection signal="custom_pressed" from="UI/PauseMenu/Quit" to="UI" method="_on_quit_pressed"]
 [connection signal="custom_pressed" from="UI/DeathScreen/MainMenu" to="UI" method="_on_main_menu_pressed"]
 [connection signal="custom_pressed" from="UI/DeathScreen/Quit" to="UI" method="_on_quit_pressed"]
+[connection signal="custom_pressed" from="UI/WinScreen/MainMenu" to="UI" method="_on_main_menu_pressed"]
+[connection signal="custom_pressed" from="UI/WinScreen/Quit" to="UI" method="_on_quit_pressed"]
 
 [editable path="UI/PauseMenu/Resume"]
 [editable path="UI/PauseMenu/MainMenu"]
 [editable path="UI/PauseMenu/Quit"]
 [editable path="UI/DeathScreen/MainMenu"]
 [editable path="UI/DeathScreen/Quit"]
+[editable path="UI/WinScreen/MainMenu"]
+[editable path="UI/WinScreen/Quit"]

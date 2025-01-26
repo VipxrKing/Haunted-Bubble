@@ -70,6 +70,7 @@ func _on_resume_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	Utils.get_scene_manager().transition_to_overlay_scene("res://Scenes/main_menu.tscn")
 	$DeathScreen.visible = false
+	$WinScreen.visible = false
 	$DeathScreen/ColorRect/AnimationPlayer.play("OUT")
 	unpause()
 
