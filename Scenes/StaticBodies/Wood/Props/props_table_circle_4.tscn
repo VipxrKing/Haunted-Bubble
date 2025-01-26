@@ -43,8 +43,7 @@ radius = 1.03442
 [sub_resource type="BoxShape3D" id="BoxShape3D_gx3pa"]
 size = Vector3(0.135, 1, 0.14)
 
-[node name="Props_Table_Circle_4" type="RigidBody3D"]
-collision_layer = 2
+[node name="Props_Table_Circle_4" type="StaticBody3D"]
 collision_mask = 3
 
 [node name="Props_Table_Circle_4" type="MeshInstance3D" parent="."]

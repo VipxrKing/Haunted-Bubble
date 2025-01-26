@@ -67,13 +67,14 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pkrmg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_foehf"]
-size = Vector3(1, 1.96939, 0.806985)
+size = Vector3(1.7251, 3.43742, 1.43854)
 
 [node name="Props_Drawer" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 3
 
 [node name="Props_Drawer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.298495, 0)
 mesh = SubResource("ArrayMesh_gvqw7")
 skeleton = NodePath("")
 
@@ -83,5 +84,5 @@ mesh = SubResource("ArrayMesh_8oqhs")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.601162, -0.012929)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0153809, 1.33517, -0.0105682)
 shape = SubResource("BoxShape3D_foehf")
