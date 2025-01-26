@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4f0dbosx8mb1"]
+[gd_scene load_steps=2 format=3 uid="uid://c4f0dbosx8mb1"]
 
 [ext_resource type="Script" path="res://Scenes/player_detector.gd" id="1_osslw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sim4a"]
-size = Vector3(2.514, 2.4, 3.5)
-
 [node name="PlayerDetector" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648815, 0, 0)
+collision_mask = 2
 script = ExtResource("1_osslw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633656, 1.164, 0)
-shape = SubResource("BoxShape3D_sim4a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
