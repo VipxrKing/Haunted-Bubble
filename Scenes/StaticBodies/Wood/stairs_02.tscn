@@ -35,13 +35,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j2jja")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6caab"]
-size = Vector3(2.12292, 0.351685, 5.40802)
+size = Vector3(2.12292, 0.351685, 6.05508)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f6j6l"]
-size = Vector3(0.130127, 0.522736, 5.2447)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_smoka"]
+points = PackedVector3Array(0.88922, 3.51565, -1.87589, 1.13736, 1.5306, 2.01249, 1.13736, 1.69645, 1.84702, 0.88922, 1.5306, 2.01249, 0.88922, 5.25347, -1.71003, 0.806464, 0.28982, 1.51608, 1.13736, 3.6815, -2.04137, 1.13736, -0.0413656, 1.68155, 1.13736, 5.25347, -1.71003, 0.806464, 3.76391, -1.46162, 0.88922, -0.0413656, 2.01249, 0.88922, 5.25347, -2.04137, 0.806464, 3.51565, -1.79256, 0.88922, -0.0413656, 1.68155, 0.806464, 0.455154, 1.84702, 1.13736, 5.25347, -2.04137, 1.13736, -0.0413656, 2.01249, 0.88922, 3.6815, -2.04137, 0.806464, 0.868748, 1.51608, 0.806464, 0.621006, 1.1022, 0.806464, 2.68794, -0.303319)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g2coe"]
-size = Vector3(0.130127, 0.321793, 5.37009)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0y3tl"]
+points = PackedVector3Array(-1.09634, 3.6815, -2.04137, -0.930935, 1.5306, 2.01249, -0.930935, 1.69645, 1.84702, -0.848195, 3.51565, -1.79256, -1.09634, -0.0413656, 1.68155, -1.09634, 5.25347, -1.71003, -0.848195, 0.28982, 1.51608, -1.09634, 1.5306, 2.01249, -0.930935, 5.25347, -1.71003, -0.848195, 0.455154, 1.84702, -0.930935, 5.25347, -2.04137, -0.930935, -0.0413656, 2.01249, -0.848195, 3.76391, -1.46162, -0.930935, -0.0413656, 1.68155, -0.930935, 3.6815, -2.04137, -1.09634, 5.25347, -2.04137, -1.09634, -0.0413656, 2.01249, -0.848195, 0.868748, 1.51608, -0.848195, 0.621006, 1.1022, -0.848195, 2.68794, -0.303319)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 
@@ -52,21 +52,11 @@ mesh = SubResource("ArrayMesh_n5xxu")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.00264549, 2.02154, -0.00123609)
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.00264549, 1.79277, 0.227536)
 shape = SubResource("BoxShape3D_6caab")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.998901, 2.60731, 0.0524967)
-shape = SubResource("BoxShape3D_f6j6l")
+shape = SubResource("ConvexPolygonShape3D_smoka")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.997803, 3.23519, 0.0150592)
-shape = SubResource("BoxShape3D_g2coe")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -1.0011, 2.60731, 0.0524967)
-shape = SubResource("BoxShape3D_f6j6l")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -1.0022, 3.23519, 0.0150592)
-shape = SubResource("BoxShape3D_g2coe")
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0y3tl")
