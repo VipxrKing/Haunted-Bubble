@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://butpe0nv3ifem"]
+[gd_scene load_steps=30 format=4 uid="uid://butpe0nv3ifem"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_70p7u"]
 [ext_resource type="Script" path="res://Scenes/head.gd" id="2_b7xwp"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c41gp7d3bokpj" path="res://Mesh/Linterna_3.png" id="5_2kjbe"]
 [ext_resource type="Texture2D" uid="uid://cqgsd2xc7851y" path="res://Mesh/Linterna_2.png" id="6_of51y"]
 [ext_resource type="Texture2D" uid="uid://ddogb3fk7aphm" path="res://Textures/flashlight-icon-android-17.png" id="7_1um4g"]
+[ext_resource type="AudioStream" uid="uid://ciswk74h2jwps" path="res://Audio/Muerte Burbujeante.wav" id="8_3klq4"]
+[ext_resource type="AudioStream" uid="uid://ckurqr7drbg5o" path="res://Audio/Paso 1.wav" id="9_5kwgu"]
+[ext_resource type="AudioStream" uid="uid://bir340qsqxnr0" path="res://Audio/Paso 2.wav" id="10_4lq3v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bavd1"]
 resource_name = "standardSurface1"
@@ -374,9 +377,17 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f3r8"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wj4m0"]
+height = 1.2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_656jr"]
+streams_count = 2
+stream_0/stream = ExtResource("9_5kwgu")
+stream_1/stream = ExtResource("10_4lq3v")
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 17
+floor_snap_length = 0.5
 script = ExtResource("1_70p7u")
 
 [node name="Head" type="Node3D" parent="."]
@@ -444,8 +455,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_idehi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="FullCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_7f3r8")
+
+[node name="CrouchCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_wj4m0")
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3klq4")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="StepAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_656jr")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="CrouchDetector" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="FullCollision" type="CollisionShape3D" parent="CrouchDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_7f3r8")
 
 [connection signal="timeout" from="Head/Lantern/RandomTimer" to="." method="_on_random_timer_timeout"]
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]

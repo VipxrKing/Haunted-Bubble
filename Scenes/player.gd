@@ -33,7 +33,7 @@ var sprinting:bool = false
 var sprint_blocked:bool = false
 var Stamina:float = 5.0
 
-var LanternBattery:float = 1000.0
+var LanternBattery:float = 690.0
 
 var StaminaBar
 var StaminaBar2
@@ -95,11 +95,15 @@ func _physics_process(delta) -> void:
 		if Input.is_action_pressed("CROUCH"):
 			CURRENT_SPEED = CROUNCHING_SPEED
 			head.position.y = lerp(head.position.y,1.8 - CROUCHING_DEPTH,delta*LERP_SPEED)
+			$FullCollision.disabled = true
 		else:
+			$FullCollision.disabled = false
 			head.position.y = lerp(head.position.y,1.8,delta*LERP_SPEED)
 			if Input.is_action_pressed("SPRINT"):
 				if !Utils.custom_equal_aprox_float(Stamina,0.0) and !sprint_blocked:
 					sprinting = true
+					$StepTimer.wait_time = 0.4
+					$StepAudio.volume_db = -20
 					Utils.get_ui().tween_stamina_bars(true)
 					CURRENT_SPEED = SPRINTING_SPEED
 					if DIRECTION:
@@ -107,12 +111,16 @@ func _physics_process(delta) -> void:
 					else:
 						head.tween_fov(false)
 				else:
+					$StepTimer.wait_time = 0.7
+					$StepAudio.volume_db = -30
 					sprint_blocked = true
 					sprinting = false
 					CURRENT_SPEED = WALKING_SPEED
 					head.tween_fov(false)
 					
 			else:
+				$StepTimer.wait_time = 0.7
+				$StepAudio.volume_db = -30
 				sprinting = false
 				CURRENT_SPEED = WALKING_SPEED
 				head.tween_fov(false)
@@ -163,6 +171,7 @@ func _on_random_timer_timeout() -> void:
 		$Head/Lantern/RandomTimer.wait_time = randf_range(1.0,5.0)
 
 func death():
+	$DeathAudio.play()
 	INPUT = false
 	Utils.get_ui().death()
 	var tween:Tween = create_tween()
@@ -175,3 +184,10 @@ func death_finish():
 	if lantern: $Head/Lantern/AnimationPlayer.play("TURN_OFF")
 	await get_tree().create_timer(2.5).timeout
 	Utils.get_ui().death_finish()
+
+func _on_step_timer_timeout() -> void:
+	if !Utils.custom_equal_aprox_vec3(DIRECTION,Vector3.ZERO):
+		$StepAudio.playing = true
+		print(DIRECTION)
+	else:
+		$StepAudio.playing = false

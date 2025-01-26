@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crbnj2m2ueeyy"
+path="res://.godot/imported/Bubbly Follows.wav-0c64fb55c95cc8dcfe4ba7cfccb91f1e.sample"
+
+[deps]
+
+source_file="res://Audio/Bubbly Follows.wav"
+dest_files=["res://.godot/imported/Bubbly Follows.wav-0c64fb55c95cc8dcfe4ba7cfccb91f1e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
