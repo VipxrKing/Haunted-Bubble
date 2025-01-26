@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=4 uid="uid://btqqsvmwei58q"]
+[gd_scene load_steps=22 format=4 uid="uid://btqqsvmwei58q"]
 
 [ext_resource type="Texture2D" uid="uid://coi00xehq78yg" path="res://Fbx/kitchen_fbx/Texture8x8.png" id="1_pl3w5"]
 [ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_3b7w4"]
 [ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="2_q5xqr"]
+[ext_resource type="PackedScene" uid="uid://dnm1qp4g3vsu8" path="res://Scenes/bubbles.tscn" id="4_cgov8"]
+[ext_resource type="AudioStream" uid="uid://c134ypueut1rk" path="res://Audio/Burbuja Asesina 2.wav" id="5_36fpc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tocns"]
 resource_name = "8x8"
@@ -91,6 +93,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Bubbles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hol27"]
 resource_name = "close"
@@ -124,6 +150,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Bubbles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4omqo"]
@@ -196,6 +246,13 @@ shape = SubResource("BoxShape3D_j5imq")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Mesh/Cabinet5/Door01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.424492, 0.271383)
 shape = SubResource("BoxShape3D_x56om")
+
+[node name="Bubbles" parent="Mesh/Cabinet5" instance=ExtResource("4_cgov8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.293309, 0.0904695)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Mesh/Cabinet5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294065, 0.068414)
+stream = ExtResource("5_36fpc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10352e-05, 0.80399, 0.0401001)

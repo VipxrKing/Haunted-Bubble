@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://c3cler4dmc1ys"]
+[gd_scene load_steps=26 format=4 uid="uid://c3cler4dmc1ys"]
 
 [ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="1_ehw22"]
 [ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="1_tr05j"]
+[ext_resource type="PackedScene" uid="uid://dnm1qp4g3vsu8" path="res://Scenes/bubbles.tscn" id="3_1ih7v"]
+[ext_resource type="AudioStream" uid="uid://c134ypueut1rk" path="res://Audio/Burbuja Asesina 2.wav" id="4_wqaql"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebmyj"]
 resource_name = "Toilet_Round"
@@ -198,6 +200,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Bubbles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_by32o"]
 resource_name = "close"
@@ -231,6 +257,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Bubbles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqvac"]
@@ -291,6 +341,13 @@ shape = SubResource("BoxShape3D_lcuh2")
 libraries = {
 "": SubResource("AnimationLibrary_xqvac")
 }
+
+[node name="Bubbles" parent="." instance=ExtResource("3_1ih7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27277, 0.0104322)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.273067, 0.00822499)
+stream = ExtResource("4_wqaql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00327682, 0.387174, -0.277466)
