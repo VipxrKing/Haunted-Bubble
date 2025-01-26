@@ -1,12 +1,13 @@
-extends StaticBody3D
+extends Node3D
 
+@onready var animation:AnimationPlayer = self.find_child("AnimationPlayer")
 var open:bool = false
-var busy:bool = false
 
 func _on_interactable_interacted() -> void:
 	if open:
-		$Interactable/AnimationPlayer.play("close")
+		animation.play("close")
 		open = false
 	else:
-		$Interactable/AnimationPlayer.play("open")
+		animation.play("open")
 		open = true
+		
