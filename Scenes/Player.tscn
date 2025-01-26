@@ -107,7 +107,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -135,7 +135,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -163,7 +163,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -190,7 +190,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -219,7 +219,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/path = NodePath("../SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -406,17 +406,8 @@ debug_shape_thickness = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 doppler_tracking = 2
 
-[node name="Lantern" type="Node3D" parent="Head"]
-transform = Transform3D(0.0045549, -0.000800956, 0, 1.75047e-05, 0.000570787, 0.0045609, -0.000334032, -0.010892, 0.00023901, 0.873287, -0.567948, -1.05889)
-rotation_order = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Lantern"]
-transform = Transform3D(16.65, 0, 0, 0, 16.65, 0, 0, 0, 16.65, 0, 0, 0)
-mesh = SubResource("ArrayMesh_f0fow")
-skeleton = NodePath("")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Head/Lantern"]
-transform = Transform3D(1, -2.04849e-07, 8.95423e-15, 0, -4.37114e-08, -1, 2.04849e-07, 1, -4.37114e-08, 0.15593, 20.1137, -0.0240784)
+[node name="SpotLight3D" type="SpotLight3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(0.921569, 0.941176, 0.737255, 1)
 light_energy = 3.0
 light_indirect_energy = 2.0
@@ -427,6 +418,15 @@ shadow_enabled = true
 spot_range = 30.0
 spot_attenuation = 0.25
 spot_angle = 25.0
+
+[node name="Lantern" type="Node3D" parent="Head"]
+transform = Transform3D(0.0045549, -0.000800956, 0, 1.75047e-05, 0.000570787, 0.0045609, -0.000334032, -0.010892, 0.00023901, 0.873287, -0.567948, -1.05889)
+rotation_order = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Lantern"]
+transform = Transform3D(16.65, 0, 0, 0, 16.65, 0, 0, 0, 16.65, 0, 0, 0)
+mesh = SubResource("ArrayMesh_f0fow")
+skeleton = NodePath("")
 
 [node name="Idler" type="AnimationPlayer" parent="Head/Lantern"]
 libraries = {
