@@ -2,8 +2,11 @@ extends CharacterBody3D
 
 @onready var navigation_agent_3d:NavigationAgent3D = $NavigationAgent3D
 
-@export var WALKING_SPEED:float = 7.0
-@export var ROTATION_SPEED:float = 6.0
+@export var WALKING_SPEED:float = 4.0
+@export var RUN_SPEED:float = 7.0
+
+var SPEED:float = 4.0
+
 
 const FALLING_SPEED:float = 9.8
 var ACCELERATION:float = 10.0
@@ -24,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_3d.target_position = playerref.global_position
 	face_to()
 	direction = (navigation_agent_3d.get_next_path_position() - global_position).normalized()
-	velocity = velocity.lerp(direction*WALKING_SPEED,ACCELERATION * delta)
+	velocity = velocity.lerp(direction*SPEED,ACCELERATION * delta)
 	move_and_slide()
 	
 func face_to(to_player:bool = false) -> void:
@@ -43,7 +46,7 @@ func face_to(to_player:bool = false) -> void:
 	if !to_player: duration = atan - rotation.y
 	else: duration = (atan - rotation.y) * 2
 	
-	body_rot_tween.tween_property(self,"rotation:y",atan,absf(duration/3))
+	body_rot_tween.tween_property(self,"rotation:y",atan,absf(duration/5))
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -56,3 +59,13 @@ func _on_random_timer_timeout() -> void:
 	
 func _on_bubble_audio_finished() -> void:
 	$RandomTimer.start()
+
+func _on_run_timer_timeout() -> void:
+	$"Mesh/AnimationPlayer".play("WALK")
+	SPEED = WALKING_SPEED
+	$WalkTimer.start()
+
+func _on_walk_timer_timeout() -> void:
+	$"Mesh/AnimationPlayer".play("RUN")
+	SPEED = RUN_SPEED
+	$RunTimer.start()

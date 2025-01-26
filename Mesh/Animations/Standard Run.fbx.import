@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8g0wigyg2q2b"
-path="res://.godot/imported/Run Forward.fbx-42611ecdd68742a5ad0e445135486857.scn"
+uid="uid://funrvmqmgcji"
+path="res://.godot/imported/Standard Run.fbx-5d1b18ef40a077374148594dbd382f15.scn"
 
 [deps]
 
-source_file="res://Mesh/Animations/Run Forward.fbx"
-dest_files=["res://.godot/imported/Run Forward.fbx-42611ecdd68742a5ad0e445135486857.scn"]
+source_file="res://Mesh/Animations/Standard Run.fbx"
+dest_files=["res://.godot/imported/Standard Run.fbx-5d1b18ef40a077374148594dbd382f15.scn"]
 
 [params]
 
