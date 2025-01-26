@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://bryreaaafrgkt"]
+[gd_scene load_steps=15 format=4 uid="uid://bryreaaafrgkt"]
 
+[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="1_7j6af"]
 [ext_resource type="Material" uid="uid://cr35py5yx8oiv" path="res://Fbx/HouseAndProps_AssetPack_Godot/LoafbrrAssets/HouseAndPropsPack/Material/Doors.material" id="1_gedxb"]
 [ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_idh4w"]
 
@@ -85,7 +86,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Door01:rotation")
+tracks/0/path = NodePath("Door01:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +98,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/Door02:rotation")
+tracks/1/path = NodePath("Door02:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +115,7 @@ step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Door01:rotation")
+tracks/0/path = NodePath("Door01:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +127,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/Door02:rotation")
+tracks/1/path = NodePath("Door02:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +144,7 @@ step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Door01:rotation")
+tracks/0/path = NodePath("Door01:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -155,7 +156,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/Door02:rotation")
+tracks/1/path = NodePath("Door02:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -173,43 +174,45 @@ _data = {
 }
 
 [node name="Door_Double_Tall_01" type="Node3D"]
+script = ExtResource("1_7j6af")
+door = true
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="Door01" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30984, 0, 0)
+metadata/_edit_group_ = true
 
-[node name="Door01" type="StaticBody3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32138, 0, 0)
-
-[node name="Door_Double_Tall_5" type="MeshInstance3D" parent="Mesh/Door01"]
+[node name="Door_Double_Tall_5" type="MeshInstance3D" parent="Door01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.283)
 mesh = SubResource("ArrayMesh_gbrjc")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Door01"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646902, 1.62166, -0.2142)
 shape = SubResource("BoxShape3D_1rfsd")
 
-[node name="Interactable" parent="Mesh/Door01" instance=ExtResource("2_idh4w")]
+[node name="Interactable" parent="Door01" instance=ExtResource("2_idh4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.703447, 1.57881, -0.218534)
 
-[node name="CollisionShape3D" parent="Mesh/Door01/Interactable" index="0"]
+[node name="CollisionShape3D" parent="Door01/Interactable" index="0"]
 shape = SubResource("BoxShape3D_kpp2x")
 
-[node name="Door02" type="StaticBody3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33265, 0, 0)
+[node name="Door02" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31534, 0, 0)
+metadata/_edit_group_ = true
 
-[node name="Door_Double_Tall_6" type="MeshInstance3D" parent="Mesh/Door02"]
+[node name="Door_Double_Tall_6" type="MeshInstance3D" parent="Door02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.283)
 mesh = SubResource("ArrayMesh_xpvyw")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/Door02"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633795, 1.62166, -0.2142)
 shape = SubResource("BoxShape3D_srb0g")
 
-[node name="Interactable" parent="Mesh/Door02" instance=ExtResource("2_idh4w")]
+[node name="Interactable" parent="Door02" instance=ExtResource("2_idh4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695874, 1.58011, -0.21891)
 
-[node name="CollisionShape3D" parent="Mesh/Door02/Interactable" index="0"]
+[node name="CollisionShape3D" parent="Door02/Interactable" index="0"]
 shape = SubResource("BoxShape3D_kpp2x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -217,5 +220,8 @@ libraries = {
 "": SubResource("AnimationLibrary_u21ng")
 }
 
-[editable path="Mesh/Door01/Interactable"]
-[editable path="Mesh/Door02/Interactable"]
+[connection signal="Interacted" from="Door01/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="Interacted" from="Door02/Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Door01/Interactable"]
+[editable path="Door02/Interactable"]

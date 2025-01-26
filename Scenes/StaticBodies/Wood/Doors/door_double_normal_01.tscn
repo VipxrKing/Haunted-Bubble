@@ -168,9 +168,11 @@ _data = {
 
 [node name="Door_Double_Normal_01" type="Node3D"]
 script = ExtResource("1_8nlak")
+door = true
 
 [node name="Door01" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24898, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22157, 0, 0)
+metadata/_edit_group_ = true
 
 [node name="Door_Double_Normal_1" type="MeshInstance3D" parent="Door01"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.263)
@@ -178,7 +180,7 @@ mesh = SubResource("ArrayMesh_g6o8a")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603769, 1.11189, -0.219641)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.585238, 1.11189, -0.219641)
 shape = SubResource("BoxShape3D_ngk45")
 
 [node name="Interactable" parent="Door01" instance=ExtResource("3_7wgw7")]
@@ -188,7 +190,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.633403, 1.05904, -0.224263
 shape = SubResource("BoxShape3D_1613c")
 
 [node name="Door02" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2473, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23456, 0, 0)
+metadata/_edit_group_ = true
 
 [node name="Door_Double_Normal_2" type="MeshInstance3D" parent="Door02"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.263)
@@ -196,7 +199,7 @@ mesh = SubResource("ArrayMesh_ngl5q")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door02"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593334, 1.11116, -0.219758)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.588039, 1.11116, -0.219758)
 shape = SubResource("BoxShape3D_ngk45")
 
 [node name="Interactable" parent="Door02" instance=ExtResource("3_7wgw7")]
@@ -210,6 +213,9 @@ shape = SubResource("BoxShape3D_1613c")
 libraries = {
 "": SubResource("AnimationLibrary_4augl")
 }
+
+[connection signal="Interacted" from="Door01/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="Interacted" from="Door02/Interactable" to="." method="_on_interactable_interacted"]
 
 [editable path="Door01/Interactable"]
 [editable path="Door02/Interactable"]

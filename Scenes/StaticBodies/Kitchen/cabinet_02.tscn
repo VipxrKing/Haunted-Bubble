@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://r8m17chpj6mb"]
+[gd_scene load_steps=31 format=4 uid="uid://r8m17chpj6mb"]
 
 [ext_resource type="Texture2D" uid="uid://coi00xehq78yg" path="res://Fbx/kitchen_fbx/Texture8x8.png" id="1_7se4a"]
 [ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="2_ks7ws"]
@@ -74,9 +74,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5e6tc")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hktsp"]
-points = PackedVector3Array(-0.290897, 0.473033, -0.16628, -0.3, 0.460885, 0.299963, -0.290897, 0.691806, -0.16628, 0.290854, 0.473033, -0.16628, -0.3, 0.460885, 0.309959, -0.3, 0.715207, 0.299963, 0.300017, 0.460885, 0.299963, 0.290854, 0.691806, -0.16628, -0.289487, 0.4749, 0.319295, -0.3, 0.715207, 0.309959, 0.300017, 0.460885, 0.309959, 0.299958, 0.715207, 0.299963, -0.0490338, 0.665493, 0.352072, -0.289487, 0.701167, 0.319295, 0.289445, 0.4749, 0.319295, -0.0490338, 0.672961, 0.352072, 0.299958, 0.715207, 0.309959, 0.289445, 0.701167, 0.319295, 0.0489917, 0.665493, 0.352072, 0.0489917, 0.672961, 0.352072)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3n7gq"]
 size = Vector3(0.608337, 0.256561, 0.0714264)
 
@@ -135,6 +132,15 @@ _data = {
 "close": SubResource("Animation_8ika6"),
 "open": SubResource("Animation_ctrbl")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypals"]
+size = Vector3(0.604919, 0.0352173, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22y7w"]
+size = Vector3(0.0319519, 0.184425, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_itg6p"]
+size = Vector3(0.604919, 0.184679, 0.04216)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qr8pb"]
 _surfaces = [{
@@ -230,8 +236,23 @@ _data = {
 "open": SubResource("Animation_84f3n")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_871y3"]
+size = Vector3(0.604919, 0.109528, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ssi6"]
+size = Vector3(0.0319519, 0.250296, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ls5ij"]
+size = Vector3(0.0319519, 0.250904, 0.466156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qbpn"]
+size = Vector3(0.604919, 0.249566, 0.04216)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwn36"]
+size = Vector3(0.604919, 0.251031, 0.04216)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4pox"]
-size = Vector3(0.618042, 0.822052, 0.690918)
+size = Vector3(0.618042, 0.0478668, 0.690918)
 
 [node name="Cabinet_02" type="StaticBody3D"]
 
@@ -242,16 +263,12 @@ mesh = SubResource("ArrayMesh_u7klf")
 skeleton = NodePath("")
 
 [node name="Door01" type="AnimatableBody3D" parent="Mesh/Cabinet4"]
+collision_mask = 5
 script = ExtResource("2_ks7ws")
 
 [node name="Cabinet4-D1" type="MeshInstance3D" parent="Mesh/Cabinet4/Door01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0, 2.98023e-08)
 mesh = SubResource("ArrayMesh_ybvq4")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0, 2.98023e-08)
-shape = SubResource("ConvexPolygonShape3D_hktsp")
 
 [node name="Interactable" parent="Mesh/Cabinet4/Door01" instance=ExtResource("2_rcidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583798, 0.318073)
@@ -265,11 +282,31 @@ libraries = {
 "": SubResource("AnimationLibrary_2j4eq")
 }
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.489097, 0.0478044)
+shape = SubResource("BoxShape3D_ypals")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.287308, 0.595881, 0.0478044)
+shape = SubResource("BoxShape3D_22y7w")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285548, 0.595756, 0.0478044)
+shape = SubResource("BoxShape3D_22y7w")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.596489, -0.164194)
+shape = SubResource("BoxShape3D_itg6p")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Mesh/Cabinet4/Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.595118, 0.259783)
+shape = SubResource("BoxShape3D_itg6p")
+
 [node name="Door02" type="AnimatableBody3D" parent="Mesh/Cabinet4"]
+collision_mask = 5
 script = ExtResource("2_ks7ws")
 
 [node name="Cabinet4-D2" type="MeshInstance3D" parent="Mesh/Cabinet4/Door02"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0, 2.98023e-08)
 mesh = SubResource("ArrayMesh_v1eee")
 skeleton = NodePath("")
 
@@ -288,9 +325,32 @@ libraries = {
 "": SubResource("AnimationLibrary_i1lxg")
 }
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Mesh/Cabinet4/Door02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.194002, 0.0471992)
+shape = SubResource("BoxShape3D_871y3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Mesh/Cabinet4/Door02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.287308, 0.296567, 0.0471992)
+shape = SubResource("BoxShape3D_7ssi6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Mesh/Cabinet4/Door02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285548, 0.296746, 0.0471992)
+shape = SubResource("BoxShape3D_ls5ij")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Mesh/Cabinet4/Door02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.296683, -0.164799)
+shape = SubResource("BoxShape3D_3qbpn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Mesh/Cabinet4/Door02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000823975, 0.296044, 0.259178)
+shape = SubResource("BoxShape3D_nwn36")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000427246, 0.409554, 0.0393066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000427246, 0.796647, 0.0393066)
 shape = SubResource("BoxShape3D_h4pox")
+
+[connection signal="Interacted" from="Mesh/Cabinet4/Door01/Interactable" to="Mesh/Cabinet4/Door01" method="_on_interactable_interacted"]
+[connection signal="Interacted" from="Mesh/Cabinet4/Door02/Interactable" to="Mesh/Cabinet4/Door02" method="_on_interactable_interacted"]
 
 [editable path="Mesh/Cabinet4/Door01/Interactable"]
 [editable path="Mesh/Cabinet4/Door02/Interactable"]

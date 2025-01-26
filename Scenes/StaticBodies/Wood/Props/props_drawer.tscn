@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://b6t1obfjrepoa"]
+[gd_scene load_steps=17 format=4 uid="uid://b6t1obfjrepoa"]
 
 [ext_resource type="Material" uid="uid://oy0hs84vtoji" path="res://Fbx/HouseAndProps_AssetPack_Godot/LoafbrrAssets/HouseAndPropsPack/Material/Trim_Props.material" id="1_52vl8"]
+[ext_resource type="Script" path="res://Scenes/StaticBodies/Wood/Doors/open_door.gd" id="2_gnx6d"]
+[ext_resource type="PackedScene" uid="uid://b2hievtfwwk4g" path="res://Scenes/interactable.tscn" id="2_kprep"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_m2v7l"]
 _surfaces = [{
@@ -34,6 +36,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m2v7l")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wudmx"]
+size = Vector3(1.74754, 3.31494, 0.0888672)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ns71y"]
+size = Vector3(0.0949631, 3.31494, 1.29565)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nayjh"]
+size = Vector3(1.74754, 0.101776, 1.20544)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_pkrmg"]
 _surfaces = [{
 "aabb": AABB(-0.017872, -0.890478, -0.0244155, 0.916246, 1.78096, 0.0560897),
@@ -66,23 +77,123 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pkrmg")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_foehf"]
-size = Vector3(1.7251, 3.43742, 1.43854)
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6weg"]
+size = Vector3(1.73807, 3.28326, 0.134399)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsopi"]
+size = Vector3(1.68628, 0.708496, 0.59668)
+
+[sub_resource type="Animation" id="Animation_6vwhu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6d3w8"]
+resource_name = "close"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f8rmw"]
+resource_name = "open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trafl"]
+_data = {
+"RESET": SubResource("Animation_6vwhu"),
+"close": SubResource("Animation_6d3w8"),
+"open": SubResource("Animation_f8rmw")
+}
 
 [node name="Props_Drawer" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("2_gnx6d")
+door = true
 
 [node name="Props_Drawer" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0.298495, 0)
 mesh = SubResource("ArrayMesh_gvqw7")
 skeleton = NodePath("")
 
-[node name="Props_Drawer_Door" type="MeshInstance3D" parent="Props_Drawer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449187, 0.630736, 0.389271)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00087738, 1.42358, -0.675781)
+shape = SubResource("BoxShape3D_wudmx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825413, 1.42358, -0.0723877)
+shape = SubResource("BoxShape3D_ns71y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.828352, 1.42358, -0.0723877)
+shape = SubResource("BoxShape3D_ns71y")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00087738, 0.528763, 0.0355872)
+shape = SubResource("BoxShape3D_nayjh")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00087738, -0.193376, 0.0355872)
+shape = SubResource("BoxShape3D_nayjh")
+
+[node name="Door01" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780565, 1.40636, 0.642068)
+
+[node name="Props_Drawer_Door" type="MeshInstance3D" parent="Door01"]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -0.0115378, 0, 0)
 mesh = SubResource("ArrayMesh_8oqhs")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0153809, 1.33517, -0.0105682)
-shape = SubResource("BoxShape3D_foehf")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77224, -0.00088501, 0.00213629)
+shape = SubResource("BoxShape3D_j6weg")
+
+[node name="Interactable" parent="Door01" instance=ExtResource("2_kprep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.850874, -0.00274277, 0.0242243)
+
+[node name="CollisionShape3D" parent="Door01/Interactable" index="0"]
+shape = SubResource("BoxShape3D_nsopi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Door01")
+libraries = {
+"": SubResource("AnimationLibrary_trafl")
+}
+
+[connection signal="Interacted" from="Door01/Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Door01/Interactable"]
